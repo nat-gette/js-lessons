@@ -29,22 +29,48 @@
 // number = 3 % 2;
 // console.log(number);
 
-// ---------------УСЛОВНЫЕ ОПЕРАТОРЫ--------------
+// // ---------------УСЛОВНЫЕ ОПЕРАТОРЫ--------------
 
-// Если переменная "hidden", присвоить ей  "visible", иначе "hidden". И тернарным.
+// // Если переменная "hidden", присвоить ей  "visible", иначе "hidden". И тернарным.
 
-let a;
-a = '1';
+// let a;
+// a = 'hiden';
 
-if (a = 'hidden'){
-    // a = 'visible',
-    console.log(a = 'visible')
-} else {
-    // a = 'hidden',
-    console.log(a = 'hidden')
+// if (a === 'hidden'){
+//     a = 'visible',
+//     console.log(a)
+// } else {
+//     a = 'hidden',
+//     console.log(a)
+// }
+
+// // 1 Если переменная равно 0, то присвоить 1
+// // 2 Если меньше нуля, то "less then zero"
+// // если больше нуля, то умножить на 10 (короткой записью)
+// // То же самое тернарным
+
+// let b = 0;
+// if ( b === 0){
+//     b = 1;
+// } else if ( b < 0) {
+//   b = 'less then zero';
+// } else {
+//     b *= 10;
+// }
+// console.log(b);
+
+// b = b === 0 ? b = 1 : 
+//     b < 0 ? b = 'less then zero' : b*= 10 ;
+// console.log(b);
+
+
+//---------------- Switch case задача----------------
+
+let a = 'none';
+
+switch (a){
+    case 'block' : console.log('block'); break;
+    case 'none' : console.log('none'); break;
+    case 'inline' : console.log('inline'); break;
+    default : console.log('other');
 }
-
-// 1 Если переменная равно 0, то присвоить 1
-// 2 Если меньше нуля, то "less then zero"
-// если больше нуля, то умножить на 10 (короткой записью)
-// То же самое тернарным
