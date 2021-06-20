@@ -64,13 +64,145 @@
 // console.log(b);
 
 
-//---------------- Switch case задача----------------
+// //---------------- Switch case задача----------------
 
-let a = 'none';
+// let a = 'none';
 
-switch (a){
-    case 'block' : console.log('block'); break;
-    case 'none' : console.log('none'); break;
-    case 'inline' : console.log('inline'); break;
-    default : console.log('other');
+// switch (a){
+//     case 'block' : console.log('block'); break;
+//     case 'none' : console.log('none'); break;
+//     case 'inline' : console.log('inline'); break;
+//     default : console.log('other');
+// }
+
+// //---------------- Задачи на ЦИКЛЫ ----------------
+// // Сделать строку перевертыш
+// let string = 'tseb eht ma i';
+// let srtingRev = '';
+// for ( let i = string.length - 1; i >= 0; i--){
+//     srtingRev += string[i] ;
+//     // console.log(string[i]);
+// }
+// console.log(srtingRev);
+
+// Дана строка "I am an the easycode". Сделать первые буквы каждого слова в верхнем регистре.
+
+let string = "I am an easycode";
+let new_string = string[0];
+for (let i = 0; i < string.length - 1; i++ ){
+    if (string[i] == " ") {
+        new_string += string[i + 1].toUpperCase();
+    } else {
+        new_string += string[i + 1];
+    }
+}
+console.log(new_string);
+
+
+let string1="I am stupid";
+let stringNew1 = string1[0];
+for (let i = 0; i < string1.length -1; i++) {
+    if(string1[i] == ' '){
+        stringNew1 += string1[i + 1].toUpperCase(); 
+    } else {
+        stringNew1 += string1[i + 1]; 
+    }
+}
+console.log(stringNew1);
+
+let i = 0;
+let stringNew2 = string[0];
+while (i < string.length - 1){
+    if(string[i] == ' '){
+        stringNew2 += string[i + 1].toUpperCase(); 
+    } else {
+        stringNew2 += string[i + 1]; 
+    }
+    i++;
+}
+console.log(stringNew2);
+
+// Вычислить факториал числа 10
+
+let number = 10;
+
+for(i = number - 1; i >= 1; i--) {
+ number *= i ;
+}
+console.log( number);
+
+while(i >=1){
+    number*= i;
+    i--;
+}
+console.log(number);
+
+// Создать строку "Считаем до 10и: 1,2,3,4,5,6,7,8,9,10"
+
+let string2 = "Считаем до 10и: ";
+
+for(i = 1; i <= 10; i ++) {
+    if (i < 10) {
+        string2 += i + ",";
+    }
+    else{ 
+        string2 += i ;
+    }
+}
+console.log(string2);
+
+let string3 = "Считаем до 10и: ";
+
+let q = 1;
+while( q <= 10 ) {
+    if (q < 10) {
+        string3 += q + ",";
+    }
+    else{ 
+        string3 += q ;
+    }
+    q ++;
+}
+console.log(string3);
+
+
+// Создать строку "JavaScript is a pretty good language" : каждая первая буква большая, пробелы удалить
+
+let string4 = "JavaScript is a pretty good language";
+let stringNew3 = string4[0];
+let w = 0;
+while (w < string4.length - 1){
+    if(string4[w] == ' '){
+        stringNew3 += string4[w + 1].toUpperCase(); 
+    } else {
+        stringNew3 += string4[w + 1]; 
+    }
+    w++;
+}
+console.log(stringNew3.split(' ').join(''));
+
+let string5 = "JavaScript is a pretty good language";
+let stringNew4 = string4[0];
+
+
+for (let e = 0; e < string5.length - 1;  e++){
+    if(string4[e] == ' '){
+        stringNew4 += string5[e + 1].toUpperCase(); 
+    } else {
+        stringNew4 += string5[e + 1]; 
+    }
+
+}
+console.log(stringNew4.split(' ').join(''));
+
+let string6 = "JavaScript is a pretty good language";
+let stringNew5 = string4[0];
+
+
+// найти все нечетные числа от 1 до 15 и вывести в консоль
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0){
+        console.log(arr[i]);
+    }
 }
