@@ -186,7 +186,7 @@ let stringNew4 = string4[0];
 
 
 for (let e = 0; e < string5.length - 1;  e++){
-    if(string4[e] == ' '){
+    if(string5[e] == ' '){
         stringNew4 += string5[e + 1].toUpperCase(); 
     } else {
         stringNew4 += string5[e + 1]; 
@@ -195,8 +195,26 @@ for (let e = 0; e < string5.length - 1;  e++){
 }
 console.log(stringNew4.split(' ').join(''));
 
+
+
+
 let string6 = "JavaScript is a pretty good language";
 let stringNew5 = string4[0];
+
+for (let r = 0; r < string6.length - 1;  r++){
+    if(string6[r+1] == ' '){
+        continue; 
+    } 
+    if(string6[r] == ' '){
+        stringNew5 += string6[r + 1].toUpperCase(); 
+    } else {
+        stringNew5 += string6[r + 1]; 
+    } 
+}
+console.log(stringNew5);
+
+
+
 
 
 // найти все нечетные числа от 1 до 15 и вывести в консоль
