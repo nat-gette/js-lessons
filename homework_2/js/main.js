@@ -199,10 +199,10 @@ console.log(stringNew4.split(' ').join(''));
 
 
 let string6 = "JavaScript is a pretty good language";
-let stringNew5 = string4[0];
+let stringNew5 = string6[0];
 
 for (let r = 0; r < string6.length - 1;  r++){
-    if(string6[r+1] == ' '){
+    if(string6[r + 1] == ' '){
         continue; 
     } 
     if(string6[r] == ' '){
