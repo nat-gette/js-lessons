@@ -59,13 +59,37 @@ rewreireString ('hello', function (symbol){
     return symbol.charCodeAt() + ' ';
 });
 
-// Функция-рекурсия, которая выдает каждый символ строки в консоль
 
-function rec() {
-    if (a >  0) {
-       return  rec(a);
+
+// 6 
+
+function changeArr ( arr, handler ){
+    let newValue = 'New value: ';
+    for  ( let i = 0; i< arr.length; i++){
+        newValue +=  handler(arr[i]);
     }
-   return 1;
+
+    return newValue.slice(0, -2);
 }
 
-console.log(rec (a));
+
+// console.log(changeArr(['my', 'name', 'is', 'Trinity'], function(collBackFunc){
+//     return collBackFunc[0].toUpperCase() + collBackFunc.slice(1);
+// }));
+
+
+// console.log(changeArr([10, 20, 30], function(collBackFunc){
+//     return collBackFunc * 10 + ', ';
+// }));
+
+console.log(changeArr([{age: 45, name:'Jhon'}, {age: 20, name:'Aaron'}], function(collBackFunc){
+    return `${collBackFunc.name} is ${collBackFunc.age}, ` ;
+}));
+
+console.log(changeArr(['abc', '123'], function(collBackFunc){
+    return collBackFunc.split('').reverse().join('') + ', ' ;
+}));
+
+console.log(changeArr([1, 2, 3], function(collBackFunc){
+    return collBackFunc + 5 + ', ' ;
+}));
