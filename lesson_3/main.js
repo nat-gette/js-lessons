@@ -49,7 +49,7 @@
 //     let a = x;
 //     let b = y;
 //     console.log ( x, y);
-//     return a + b;
+//     return a + b; 
 // }
 
 // sum();
@@ -177,4 +177,16 @@ let methodRes = someArr.some(function (value){
 });
 console.log(methodRes);
 
+function some(arr, handler){
+    for (let i = 0; i < arr.length; i++) {
+        if (handler(arr[i])) return true
+    }
+    return false;
+}
+
+let customeSome = some([1, 2, 3], function(el)  {
+    return typeof el === 'number';
+});
+
+console.log(customeSome);
 
