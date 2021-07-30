@@ -53,25 +53,37 @@
 
 // function getArray(num) {
 //     let newArr = [];
-//     for ( i = 1; i <= num; i++)
-//     newArr.push(i);
-//     return newArr;{
+
+//     for ( i = 1; i <= num; i++) {
+//         newArr.push(i);
+//     }
+
+//     return newArr;
 // }
-// console.log(getArray(10))
+
+// console.log(getArray(10));
 
 
 //4. Функция, которая принимает любое число массивов и возвращает массивы из тех же значений - 1 элемент. 
 
-// function changeCollection ( ...args) {
+// function changeCollection (a, ...args) {
 
-//         for (let i = 0; i < args.length; i++) {
-//         args[i].shift();
+//     let newArr = [];
 
+//     for (let i = a; i < args.length; i++) {
+//         newArr.push(args[i]);
 //     }
+   
 //     return args;
 //  }
 
-//  console.log(changeCollection([1,3,5], ['z','d']));
+// let ts = [1, 2, 3]; 
+// let ts2 = [4, 5, 6]; 
+
+//  console.log(changeCollection(1, ts, ts2));
+
+//  console.log(ts);
+//  console.log(ts2);
 
 
 
@@ -82,9 +94,14 @@
 
 // function reversiveSort (arg) {
   
-//     return arg.split('').sort().reverse().join();
+//     return arg.split('').sort().reverse().join('');
     
 // };
+
+
+// const reversiveSort = (arg) => arg.split('').sort().reverse().join('');
+    
+
 // console.log(reversiveSort("bcdaeflmjkhi"));
 
 
@@ -139,6 +156,26 @@
 // console.log(arr.splice(2,2));
 // console.log(arr);
 
+
+
+// 1. (исправленное) Функция, которая принимает массив, а возвращает новый массив с дублир эл-ми исходного массива
+
+// function doubleArray(arr, handler) {
+
+//     let newArr = [];
+
+//     for (let i = 0, j = arr.length; i < arr.length; i++, j++) {
+//         newArr[i] = arr[i];
+//         newArr[j] = arr[i];
+  
+//     }
+
+//     return newArr; 
+// }
+
+// console.log(doubleArray([1,2,3]));
+
+
 // 6. удалить из [1,2,3,4,5] (3,4) и вставить на их местщ 'three','four'
 
-function
+// pure function почитать
