@@ -101,7 +101,6 @@
 
 // const reversiveSort = (arg) => arg.split('').sort().reverse().join('');
     
-
 // console.log(reversiveSort("bcdaeflmjkhi"));
 
 
@@ -152,7 +151,7 @@
 
 // 5. удалить из [1,2,3,4,5] (3,4)
 
-// arr = [1,2,3,4,5];
+// let arr = [1,2,3,4,5];
 // console.log(arr.splice(2,2));
 // console.log(arr);
 
@@ -176,6 +175,106 @@
 // console.log(doubleArray([1,2,3]));
 
 
-// 6. удалить из [1,2,3,4,5] (3,4) и вставить на их местщ 'three','four'
+// 6. удалить из [1,2,3,4,5] (3,4) и вставить на их месте 'three','four'
+
+// let arr = [1,2,3,4,5];
+// console.log(arr.splice(2,2, 'three','four'));
+// console.log(arr);
+
+
+// 7. Вставить в произвольный массив после третьего элемента любое значение
+ 
+// let arr = ['I', 'am', 'an','array'];
+
+// console.log(arr.splice(3, 0, 'awesome'));
+// console.log(arr);
+
+// 8. Отсортировать массив массивов так, чтобы вначале располагались наименьшие по длине массивы
+
+// let masterArr = [[14,45], [1], ['a', 'c', 'd']];
+
+// masterArr.sort(function(prev, next) {
+//     // console.log(prev, next);
+    
+//     return prev.length - next.length;
+// });
+
+// console.log(masterArr);
+
+
+// 9. создать копию произвольного массива
+
+// let copiedArr = [].concat(masterArr); 
+// console.log(copiedArr);
+
+
+// 10. отсортировать массив объектов по возрастающему колличеству ядер 
+
+// let arr = [
+//     {cpu:'intel', 
+//     info:{cores:2, cache:3}},
+
+//     {cpu:'intel',
+//      info:{cores:4, cache:4}},
+
+//     {cpu:'amd', 
+//     info:{cores:1, cache:1}},
+
+//     {cpu:'intel', 
+//     info:{cores:3, cache:2}},
+    
+//     {cpu:'amd', 
+//     info:{cores:4, cache:2}},
+// ]
+
+// arr.sort((prev, next) => prev.info.cores - next.info.cores); 
+
+// console.log(arr);
+
+
+// 11. Создать функцию, кот будет принимать массив продуктов и две цены  и возвращает все продукты в указанном ценовом диапазоне, отсортировать от дешевых к дорогим.
+
+const products = [
+    {title: 'prod1', price: 5.2},
+    {title: 'prod2', price: 0.18},
+    {title: 'prod3', price: 15},
+    {title: 'prod4', price: 25},
+    {title: 'prod5', price: 18.9},
+    {title: 'prod6', price: 8},
+    {title: 'prod7', price: 19},
+    {title: 'prod8', price: 63}
+];
+
+function productsSort (arr, max, min) {
+   
+    let prod = [];
+   
+    for (let i = 0; i < products.length; i++) {
+        
+        if (min <= products[i].price <= max){
+            prod += products[i];
+        };
+        
+    }
+    console.log(prod);
+    prod.sort(function (prev, next){
+        return prev - next;
+    })
+}
+
+
+console.log(productsSort(products, 50, 10));
+
+
+
+
+// function getNewArray(array, start, end) {
+//     return array.slice(start, end);
+// };
+
+// let arr = ['a','b','c','d','e','f'];
+// console.log(getNewArray( arr, 2, 4));
+// console.log(arr);
+
 
 // pure function почитать
