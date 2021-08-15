@@ -245,25 +245,27 @@ const products = [
     {title: 'prod8', price: 63}
 ];
 
-function productsSort (arr, max, min) {
+function productsSort (arr, min, max) {
    
     let prod = [];
    
-    for (let i = 0; i < products.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         
-        if (min <= products[i].price <= max){
-            prod += products[i];
+        if (min <= arr[i].price,
+            arr[i].price <= max ) {
+            prod += arr[i];
         };
         
     }
     console.log(prod);
-    prod.sort(function (prev, next){
-        return prev - next;
-    })
+    prod.sort(function(prev, next) {
+         return prev - next;
+    });
+    console.log(prod);
+    
 }
 
-
-console.log(productsSort(products, 50, 10));
+console.log(productsSort(products, 10, 50));
 
 
 
