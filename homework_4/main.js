@@ -251,18 +251,17 @@ function productsSort (arr, min, max) {
    
     for (let i = 0; i < arr.length; i++) {
         
-        if (min <= arr[i].price,
-            arr[i].price <= max ) {
-            prod += arr[i];
+        if (min <= arr[i].price & arr[i].price <= max ) {
+            prod.push(arr[i]);
         };
         
     }
     console.log(prod);
     prod.sort(function(prev, next) {
-         return prev - next;
+         return prev.price - next.price;
     });
     console.log(prod);
-    
+    return prod;
 }
 
 console.log(productsSort(products, 10, 50));
@@ -270,13 +269,3 @@ console.log(productsSort(products, 10, 50));
 
 
 
-// function getNewArray(array, start, end) {
-//     return array.slice(start, end);
-// };
-
-// let arr = ['a','b','c','d','e','f'];
-// console.log(getNewArray( arr, 2, 4));
-// console.log(arr);
-
-
-// pure function почитать
