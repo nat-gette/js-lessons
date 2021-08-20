@@ -248,7 +248,6 @@ const products = [
 function productsSort (arr, min, max) {
    
     let prod = [];
-   
     for (let i = 0; i < arr.length; i++) {
         
         if (min <= arr[i].price & arr[i].price <= max ) {
