@@ -49,11 +49,18 @@ let tasks = [
 //как создать список ( несколько функций)
 
 let ul = document.querySelector('.list-group');
+let deleteBtns = document.getElementsByClassName('delete-item');
+
 
 function listTemplate(task) {
     let li = document.createElement('li');
     li.textContent = task;
-    li.className = "list-group-item"
+    li.className = 'list-group-item d-flex align-items-center';
+
+    let iDelete = document.createElement('i');
+    iDelete.className = 'fas fa-trash-alt delete-item ml-auto';
+
+    li.appendChild(iDelete);
 
     return li;
 }
@@ -70,6 +77,7 @@ function generateList(tasksArray) {
         // либо так 
         // ul.appendChild(listTemplate(tasksArray[i]))
     }
+    setDeleteEvent();
 }
 
 function addLists(list) {
@@ -77,5 +85,43 @@ function addLists(list) {
     generateList(tasks);
 }
 
+function setDeleteEvent(){
+        for (let i = 0; i < deleteBtns.length; i++) {
+        deleteBtns[i].addEventListener('click', function (e) {
+            console.log('click');
+        });
+    }
+}
 
+// generate list
 generateList(tasks);
+
+// // прослушивание событий
+
+//  let btn = document.querySelector('.clear-btn');
+
+//  function onClick(e) {
+//     console.log('click1', e); 
+// }
+// function onClick2(e) {
+//     console.log('click2', e); 
+// }
+
+//  btn.addEventListener("click", onClick);
+
+//  btn.addEventListener('click', onClick2)
+
+//  btn.removeEventListener('click', onClick2)
+//  console.dir(btn);
+
+
+
+
+
+// console.log(deleteBtns);
+
+// for (let i = 0; i < deleteBtns.length; i++) {
+//     deleteBtns[i].addEventListener('click', function (e) {
+//         console.log('click');
+//     });
+// }
