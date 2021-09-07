@@ -49,7 +49,8 @@ let tasks = [
 //как создать список ( несколько функций)
 
 let ul = document.querySelector('.list-group');
-let deleteBtns = document.getElementsByClassName('delete-item');
+let form = document.forms['addTodoItem'];
+let inputText = form.elements['todoText'];
 
 
 function listTemplate(task) {
@@ -77,21 +78,49 @@ function generateList(tasksArray) {
         // либо так 
         // ul.appendChild(listTemplate(tasksArray[i]))
     }
-    setDeleteEvent();
+    // setDeleteEvent();
 }
 
 function addLists(list) {
     tasks.push(list);
-    generateList(tasks);
+    ul.insertAdjacentElement('afterbegin', listTemplate(list));
 }
 
-function setDeleteEvent(){
-        for (let i = 0; i < deleteBtns.length; i++) {
-        deleteBtns[i].addEventListener('click', function (e) {
-            console.log('click');
-        });
-    }
+function delrtrListItem(target) {
+
+    let parent = target.closest('li');
+    let text = parent.textContent;
+    let index = tasks.indexOf(text);
+    tasks.splice(index, 1);
+    parent.remove();
+    console.log(tasks);
 }
+
+ul.addEventListener('click', function (e) {
+    if (e.target.classList.contains('delete-item')) {
+        delrtrListItem( e.target);
+
+    }
+});
+
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    // console.log(inputText.value);
+    if(!inputText.value) {
+        inputText.classList.add('is-invalid');
+    } else {
+        inputText.classList.remove('is-invalid')
+        addLists(inputText.value);
+        form.reset();
+    }
+
+});
+
+inputText.addEventListener('keyup', function (e){
+    console.log(inputText.value);
+    if ( )
+})
+
 
 // generate list
 generateList(tasks);
@@ -125,3 +154,4 @@ generateList(tasks);
 //         console.log('click');
 //     });
 // }
+

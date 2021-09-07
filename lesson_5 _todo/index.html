@@ -13,14 +13,39 @@
 
 <section class="tasks-wrap mt-5">
     <div class="container">
-        <h3 class="text-center">Task list</h3>
-        <ul class="list-group mb-3" >
-            <!-- <li class="list-group-item">item 1</li>
-            <li class="list-group-item">item 2</li>
-            <li class="list-group-item">item 3</li>
-            <li class="list-group-item">item 4</li>
-            <li class="list-group-item">item 5</li> -->
-        </ul>
+        <div class="card mb -3">
+            <div class="card-header">
+                Add todo
+            </div>
+            <div class="card-body">
+                <form  name="addTodoItem" action="">
+                    <div class="form-group">
+                        <label for="todoText">Text</label>
+                        <input type="text" class="fotm-control" id="todoText">
+                        <div class="invalid-feedback">
+                            Enter text
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary"> Add</button>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-3">
+           <div class="card-header">
+               Task list
+           </div>
+           <div class="card-body">
+               <ul class="list-group " >
+                <!-- <li class="list-group-item">item 1</li>
+                <li class="list-group-item">item 2</li>
+                <li class="list-group-item">item 3</li>
+                <li class="list-group-item">item 4</li>
+                <li class="list-group-item">item 5</li> -->
+            </ul>
+           </div>
+            
+
+        </div>
 
         <button class="btn btn-primary clear-btn">Clear list</button>
 
