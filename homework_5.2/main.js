@@ -108,16 +108,18 @@
 
 let li = document.querySelectorAll('li');
 // debugger
-for(let i = 0; i <= li.length; i++) {
-    if(li[i] % 2 == 0){
+for(let i = 0; i < li.length; i++) {
+    if(i % 2 == 0){
         li[i].classList.add("item");
     }
 }
 console.log(li);
 
 // 4 На все ссылки в примере, установить класс " custom-link"
+debugger
 let a = document.querySelectorAll('a');
-let aClass = a.classList.add("custom-link");
+
+let aClass = a[0].classList.add("custom-link");  //сделать цикл
 
 console.log(a);
 
