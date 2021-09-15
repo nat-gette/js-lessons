@@ -85,6 +85,17 @@
 // 4 В параграфе заменить все дочерние текстовые узлы на "-text-" (вложенные теги должны остаться) 
 
 
+let paragraph = document.querySelector('p');
+let paragraphChild = paragraph.childNodes;
+// console.log(paragraphChild);
+
+for(i = 0; i < paragraphChild.length; i ++) {
+    if(paragraphChild[i].nodeType == 3) {
+        paragraphChild[i].textContent = "-text-"
+    }
+}
+// paragraph.textContent= '-text-';
+
 
 
 
@@ -104,22 +115,29 @@
 // let linkAdd = link.setAttribute('id','link');
 // console.log(link.hasAttribute)
 
+// let lastLink = document.getElementsByTagName('a');
+// // lastLink[lastLink.length - 1].id = 'link';
+// lastLink[lastLink.length - 1].setAttribute('id', 'link');
+// console.log(lastLink);
+
+
 // // 3 На li через один установаить класс "item"
 
-let li = document.querySelectorAll('li');
-// debugger
-for(let i = 0; i < li.length; i++) {
-    if(i % 2 == 0){
-        li[i].classList.add("item");
-    }
-}
-console.log(li);
+// let li = document.querySelectorAll('li');
+// // debugger
+// for(let i = 0; i < li.length; i++) {
+//     if(i % 2 == 0){
+//         li[i].classList.add("item");
+//     }
+// }
+// console.log(li);
 
-// 4 На все ссылки в примере, установить класс " custom-link"
-debugger
-let a = document.querySelectorAll('a');
+// // 4 На все ссылки в примере, установить класс " custom-link"
 
-let aClass = a[0].classList.add("custom-link");  //сделать цикл
+// let a = document.querySelectorAll('a');
+//  debugger
+// for(let i = 0; i < a.length; i++){
+//     let aClass = a[i].classList.add("custom-link"); 
+// }
 
-console.log(a);
-
+// console.log(a);
