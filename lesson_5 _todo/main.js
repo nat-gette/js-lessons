@@ -118,7 +118,7 @@ form.addEventListener('submit', function (e) {
 
 inputText.addEventListener('keyup', function (e){
     console.log(inputText.value);
-    if ( )
+    // if ( )
 })
 
 
@@ -155,3 +155,8 @@ generateList(tasks);
 //     });
 // }
 
+
+let body = document.body;
+let taskWrap = document.querySelector('.tasks-wrap');
+let container  = document.querySelector('.container');
+let listCard = document.querySelector('.list-card');
