@@ -1,0 +1,6 @@
+.alert-tasks {
+    display: none;
+}
+.alert-tasks-active {
+    display: block;
+}
