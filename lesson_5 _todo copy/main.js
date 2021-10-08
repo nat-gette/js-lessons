@@ -5,7 +5,8 @@ let ul = document.querySelector('.list-group');
 let form = document.forms['addTodoItem'];
 let inputText = form.elements['todoText'];
 let tasksSuccessAlert = document.querySelector('.alert-tasks');
-let emptyListAlert = document.querySelector('.alert-tasks-list')
+let emptyListAlert = document.querySelector('.alert-tasks-list');
+let btnClearList = document.querySelector('.clear-btn');
 
 
 function listTemplate(task) {
@@ -31,31 +32,32 @@ function listTemplate(task) {
 
 function clearList() {
     ul.innerHTML = '';
+    tasks = [];
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    checkEmptyList();
 }
 
 function generateList(tasksArray) {
     for (let i = 0; i < tasks.length; i++) {
         let li = listTemplate(tasksArray[i]);
         ul.appendChild(li);
-
+        debugger
         // либо так 
         // ul.appendChild(listTemplate(tasksArray[i]))
     }
-    if (tasks.length == 0) {
 
-        emptyListAlert.classList.add('alert-tasks-active');
-        emptyListAlert.classList.add('alert-info');
-        emptyListAlert.textContent = 'Empty list';
-        // как очистить лист до конца? если удалить все элементы, то они не удалятся из хранилища, перезапись произойдет только при добавлении какого-либо таска в список
-    }
-    // setDeleteEvent();
+    checkEmptyList();
 }
+
+
 
 function addLists(list) {
     tasks.push(list);
     ul.insertAdjacentElement('afterbegin', listTemplate(list));
     // add to localStorage
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    checkEmptyList();
 }
 
 function deliteListItem(target) {
@@ -65,7 +67,10 @@ function deliteListItem(target) {
     let index = tasks.indexOf(text);
     tasks.splice(index, 1);
     parent.remove();
-    console.log(tasks);
+    // перезаписываем локал сторедж 
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    checkEmptyList();
 }
 
 ul.addEventListener('click', function (e) {
@@ -80,6 +85,8 @@ ul.addEventListener('click', function (e) {
     }
 });
 
+btnClearList.addEventListener('click', () => clearList())
+
 function showAlert(className, textAlert) {
 
     tasksSuccessAlert.classList.add('alert-tasks-active');
@@ -92,6 +99,26 @@ function showAlert(className, textAlert) {
         tasksSuccessAlert.textContent = '';
 
     }, 3000);
+
+    // исправить момент с перекрестными уведомлениями (clerTimeout())
+
+}
+
+function checkEmptyList () {
+
+    if (!tasks.length) {
+
+        emptyListAlert.classList.add('alert-tasks-active');
+        emptyListAlert.classList.add('alert-info');
+        emptyListAlert.textContent = 'Empty list';
+       
+    } else {
+
+        emptyListAlert.classList.remove('alert-tasks-active');
+        emptyListAlert.classList.remove('alert-info');
+        emptyListAlert.textContent = '';
+       
+    }
 
 }
 
@@ -123,7 +150,6 @@ form.addEventListener('submit', function (e) {
 
 inputText.addEventListener('keyup', function (e){
     console.log(inputText.value);
-    // if ( )
 })
 
 
