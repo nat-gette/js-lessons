@@ -85,15 +85,15 @@
 // 4 В параграфе заменить все дочерние текстовые узлы на "-text-" (вложенные теги должны остаться) 
 
 
-let paragraph = document.querySelector('p');
-let paragraphChild = paragraph.childNodes;
-// console.log(paragraphChild);
+// let paragraph = document.querySelector('p');
+// let paragraphChild = paragraph.childNodes;
+// // console.log(paragraphChild);
 
-for(i = 0; i < paragraphChild.length; i ++) {
-    if(paragraphChild[i].nodeType == 3) {
-        paragraphChild[i].textContent = "-text-"
-    }
-}
+// for(i = 0; i < paragraphChild.length; i ++) {
+//     if(paragraphChild[i].nodeType == 3) {
+//         paragraphChild[i].textContent = "-text-"
+//     }
+// }
 // paragraph.textContent= '-text-';
 
 
@@ -149,24 +149,29 @@ for(i = 0; i < paragraphChild.length; i ++) {
 
 // 1. Добавить в список несколько li с классом 'new-item' и текстом 'item i'
 
-let li = document.createElement('li');
-let ul = document.querySelector('ul');
-
 // li.className = 'new-item';
 // li.insertAdjacentHTML('afterbegin', 'item');
 // ul.appendChild(li);
+  
+
 
 
 function createItems (itemNum) {
-//  debugger
-  for(let i = 1; i <= itemNum; i++ ){
+
+  let ul = document.querySelector('ul');
+  let ulPreviousChild = ul.children;
+  let ulPreviousChildNum =  ulPreviousChild.length;
+  console.log(ulPreviousChildNum);
+
+  for(let i = ulPreviousChildNum + 1; i <= ulPreviousChildNum + itemNum; i++ ){
+    let li = document.createElement('li');
+
     itemText = 'item' + i;
 
     li.className = 'new-item';
     li.insertAdjacentText('beforeend', itemText);
     ul.appendChild(li);
-  }
-    
+  }  
 
 }
 
