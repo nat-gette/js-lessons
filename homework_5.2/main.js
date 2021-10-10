@@ -141,3 +141,33 @@ for(i = 0; i < paragraphChild.length; i ++) {
 // }
 
 // console.log(a);
+
+
+
+
+// -------------------- Манипкуляция содержимым. презентация 24--------------
+
+// 1. Добавить в список несколько li с классом 'new-item' и текстом 'item i'
+
+let li = document.createElement('li');
+let ul = document.querySelector('ul');
+
+// li.className = 'new-item';
+// li.insertAdjacentHTML('afterbegin', 'item');
+// ul.appendChild(li);
+
+
+function createItems (itemNum) {
+//  debugger
+  for(let i = 1; i <= itemNum; i++ ){
+    itemText = 'item' + i;
+
+    li.className = 'new-item';
+    li.insertAdjacentText('beforeend', itemText);
+    ul.appendChild(li);
+  }
+    
+
+}
+
+createItems (3);
