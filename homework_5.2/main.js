@@ -152,27 +152,38 @@
 // li.className = 'new-item';
 // li.insertAdjacentHTML('afterbegin', 'item');
 // ul.appendChild(li);
-  
-
-
 
 function createItems (itemNum) {
 
   let ul = document.querySelector('ul');
   let ulPreviousChild = ul.children;
   let ulPreviousChildNum =  ulPreviousChild.length;
-  console.log(ulPreviousChildNum);
+  // console.log(ulPreviousChildNum);
 
-  for(let i = ulPreviousChildNum + 1; i <= ulPreviousChildNum + itemNum; i++ ){
+  for(let i = ulPreviousChildNum + 1; i <= ulPreviousChildNum + itemNum; i++) {
     let li = document.createElement('li');
 
     itemText = 'item' + i;
-
     li.className = 'new-item';
     li.insertAdjacentText('beforeend', itemText);
     ul.appendChild(li);
   }  
-
 }
 
-createItems (3);
+createItems (2);
+
+// 2. Создать 3 элемента strong и добавить их в конец ссылок, которые находятся внутри списка
+
+
+
+
+
+// 3. В начало документа (body) добавить картинку img  с атрибутами src и alt.
+
+var img = document.createElement('img');
+img.setAttribute('src', 'https://www.1zoom.ru/prev2/254/253234.jpg');
+img.setAttribute('alt', 'кот следит за целью');
+document.body.insertBefore(img, document.body.firstChild);
+
+
+// 
