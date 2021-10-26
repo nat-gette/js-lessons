@@ -96,28 +96,25 @@
 
 // every - метод, который работает если все эл-ты true
 
-let someArr = [ ' some str'];
-let methodRes = someArr.every(function (value){
-    return typeof value === 'string';
+let someArr = [" some str"];
+let methodRes = someArr.every(function (value) {
+  return typeof value === "string";
 });
 console.log(methodRes);
 
+function every(arr, handler) {
+  let everyRes = true;
+  for (let i = 0; i < arr.length; i++) {
+    everyRes *= handler(arr[i]);
+  }
+  if (everyRes) {
+    return true;
+  }
+  return false;
+}
 
- function every(arr, handler) {
-     let everyRes = true;
-     for(let i = 0; i < arr.length; i++) {
-        everyRes *= handler(arr[i]);
-     }
-    if (everyRes) {
-        return true;
-    }
-    return false;
-    
-    
- }
+let customeEvery = every(["e", 1], function (el) {
+  return typeof el === "string";
+});
 
- let customeEvery = every(['e', 1], function(el){
-     return typeof el === 'string';
- });
-
- console.log(customeEvery);
+console.log(customeEvery);

@@ -153,37 +153,64 @@
 // li.insertAdjacentHTML('afterbegin', 'item');
 // ul.appendChild(li);
 
-function createItems (itemNum) {
+// function createItems (itemNum) {
 
-  let ul = document.querySelector('ul');
-  let ulPreviousChild = ul.children;
-  let ulPreviousChildNum =  ulPreviousChild.length;
-  // console.log(ulPreviousChildNum);
+//   let ul = document.querySelector('ul');
+//   let ulPreviousChild = ul.children;
+//   let ulPreviousChildNum =  ulPreviousChild.length;
+//   // console.log(ulPreviousChildNum);
 
-  for(let i = ulPreviousChildNum + 1; i <= ulPreviousChildNum + itemNum; i++) {
-    let li = document.createElement('li');
+//   for(let i = ulPreviousChildNum + 1; i <= ulPreviousChildNum + itemNum; i++) {
+//     let li = document.createElement('li');
 
-    itemText = 'item' + i;
-    li.className = 'new-item';
-    li.insertAdjacentText('beforeend', itemText);
-    ul.appendChild(li);
-  }  
-}
+//     itemText = 'item' + " " + i ;
+//     li.className = 'new-item';
+//     li.insertAdjacentText('beforeend', itemText);
+//     ul.appendChild(li);
+//   }  
+// }
 
-createItems (2);
+// createItems (2);
 
 // 2. Создать 3 элемента strong и добавить их в конец ссылок, которые находятся внутри списка
 
+// let aList = document.querySelectorAll('ul a');
 
+// for(i = 0; i < 3; i++) {
+//     let strong = document.createElement('strong');
+//     strong.innerText = aList[i].textContent;
+//     aList[i].innerHTML = '';
+
+//     aList[i].insertAdjacentElement("beforeend", strong);
+// }
 
 
 
 // 3. В начало документа (body) добавить картинку img  с атрибутами src и alt.
 
-var img = document.createElement('img');
-img.setAttribute('src', 'https://www.1zoom.ru/prev2/254/253234.jpg');
-img.setAttribute('alt', 'кот следит за целью');
-document.body.insertBefore(img, document.body.firstChild);
+// var img = document.createElement('img');
+// img.setAttribute('src', 'https://www.1zoom.ru/prev2/254/253234.jpg');
+// img.setAttribute('alt', 'кот следит за целью');
+// document.body.insertBefore(img, document.body.firstChild);
 
 
-// 
+// // 4. Найти на странице элемент mark , добавить в конец содержимого текст "green " и на эл-т установить класс green
+
+// let mark = document.querySelector('mark');
+
+// mark.insertAdjacentText('beforeend', ' green');
+// mark.className = 'green';
+
+
+
+
+// 5. отсортировать li внутри списка в обратном порядке по тексту внутри
+
+let ul = document.querySelector('ul');
+
+
+
+
+
+
+// 6.
