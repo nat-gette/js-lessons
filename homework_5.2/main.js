@@ -207,10 +207,24 @@
 // 5. отсортировать li внутри списка в обратном порядке по тексту внутри
 
 let ul = document.querySelector('ul');
+let liList = ul.children;
+
+
+let textArr = [];
+
+for (i = 0; i < liList.length; i++) {
+    textArr += liList[i].innerText + ' ,' ;
+}
+
+ul.textContent = '';
+
+for(i = 0; i < textArr.length; i--) {
+debugger
+    ul.insertAdjacentHtml("beforeend", '<li> textArr[i] </li>' );
+   
+}
 
 
 
 
 
-
-// 6.
