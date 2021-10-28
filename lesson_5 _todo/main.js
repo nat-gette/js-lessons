@@ -1,4 +1,5 @@
-let tasks = JSON.parse( localStorage.getItem('tasks') )|| [];
+
+
 
 
 // let ul = document.querySelector('.list-group');
@@ -43,6 +44,7 @@ let tasks = JSON.parse( localStorage.getItem('tasks') )|| [];
 // generateList(tasks);
 
 //как создать список ( несколько функций)
+let tasks = JSON.parse( localStorage.getItem('tasks') )|| [];
 
 let ul = document.querySelector('.list-group');
 let form = document.forms['addTodoItem'];
@@ -50,12 +52,26 @@ let inputText = form.elements['todoText'];
 let tasksSuccessAlert = document.querySelector('.alert-tasks');
 
 
+
+function generateId() {
+    let id = "";
+    let words = "0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+
+    for (let i = 0; i < 15; i ++) {
+        let position = Math.floor(Math.random() * words.length ) ;
+        id += words[position]
+        
+    }
+    return id;
+}
+
 function listTemplate(task) {
     let li = document.createElement('li');
     li.className = 'list-group-item d-flex align-items-center';
+    li.setAttribute('data-id', task.id);
 
     let span = document.createElement('span');
-    span.textContent = task;
+    span.textContent = task.text;
 
 
     let iDelete = document.createElement('i');
@@ -87,26 +103,34 @@ function generateList(tasksArray) {
 }
 
 function addLists(list) {
-    tasks.push(list);
-    ul.insertAdjacentElement('afterbegin', listTemplate(list));
+   let newTask = {
+        id: generateId(),
+        text: list
+    };
+    tasks.unsheft(newTask);
+
+    ul.insertAdjacentElement('afterbegin', listTemplate(newTask));
     // add to localStorage
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem('tasks', JSON.stringify(newTask));
 }
 
-function deliteListItem(target) {
+function deliteListItem(id) {
+    for (let i = 0; i < tasks.length; i ++) {
+        if (tasks[i].id ===id) {
+            tasks.splice(i, 1);
+            break;
+        }
+    }
 
-    let parent = target.closest('li');
-    let text = parent.textContent;
-    let index = tasks.indexOf(text);
-    tasks.splice(index, 1);
-    parent.remove();
-    console.log(tasks);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 ul.addEventListener('click', function (e) {
     if (e.target.classList.contains('delete-item')) {
-        deliteListItem( e.target);
-
+        let parent = e.target.closest('li');
+        let id = parent.dataset.id;
+        deliteListItem( id);
+        parent.remove();
         showAlert('alert-danger', 'Task has been removed success');
     } else if (e.target.classList.contains('edit-item')) {
         let span = e.target.closest('li').querySelector('span');
@@ -157,7 +181,7 @@ form.addEventListener('submit', function (e) {
 });
 
 inputText.addEventListener('keyup', function (e){
-    console.log(inputText.value);
+    // inputText.value;
     // if ( )
 })
 
