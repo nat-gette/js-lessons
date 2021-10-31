@@ -44,23 +44,23 @@
 // generateList(tasks);
 
 //как создать список ( несколько функций)
+
 let tasks = JSON.parse( localStorage.getItem('tasks') )|| [];
 
 let ul = document.querySelector('.list-group');
 let form = document.forms['addTodoItem'];
 let inputText = form.elements['todoText'];
 let tasksSuccessAlert = document.querySelector('.alert-tasks');
-
+let notificationAlert = document.querySelector('.notification-alert')
 
 
 function generateId() {
-    let id = "";
+    let id = '';
     let words = "0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
 
     for (let i = 0; i < 15; i ++) {
-        let position = Math.floor(Math.random() * words.length ) ;
-        id += words[position]
-        
+        let position = Math.floor( Math.random() * words.length );
+        id += words[position];
     }
     return id;
 }
@@ -103,11 +103,12 @@ function generateList(tasksArray) {
 }
 
 function addLists(list) {
-   let newTask = {
+    let newTask = {
         id: generateId(),
         text: list
     };
-    tasks.unsheft(newTask);
+    
+    tasks.unshift(newTask);
 
     ul.insertAdjacentElement('afterbegin', listTemplate(newTask));
     // add to localStorage
@@ -116,14 +117,48 @@ function addLists(list) {
 
 function deliteListItem(id) {
     for (let i = 0; i < tasks.length; i ++) {
-        if (tasks[i].id ===id) {
+        if (tasks[i].id === id) {
             tasks.splice(i, 1);
             break;
         }
     }
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    message( {
+        text: ' Task delited succes',
+        cssClass: 'alert-warning',
+        timeout: 4000
+    });
 }
+function editListItem(id, newValue) {
+    for (let i = 0; i < tasks.length; i ++) {
+        if (tasks[i].id === id) {
+            tasks[i].text = newValue;
+            break;
+        }
+    }
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    
+    message( {
+        text: '',
+        cssClass: 'alert-success',
+        timeout: 4000
+    });
+
+}
+
+function message (settings) {
+    notificationAlert.classList.add('settings.cssClass');
+    notificationAlert.textContent = settings.text;
+    notificationAlert.classList.add('show');
+    setTimeout (function () {
+        notificationAlert.classList.remove('show');
+    }, settings.timeout);
+    
+}
+
 
 ul.addEventListener('click', function (e) {
     if (e.target.classList.contains('delete-item')) {
@@ -131,11 +166,22 @@ ul.addEventListener('click', function (e) {
         let id = parent.dataset.id;
         deliteListItem( id);
         parent.remove();
+        
         showAlert('alert-danger', 'Task has been removed success');
     } else if (e.target.classList.contains('edit-item')) {
+        e.target.classList.toggle('fa-seve');
+        let id = e.target.closest('li').dataset.id;
         let span = e.target.closest('li').querySelector('span');
-        span.setAttribute('contenteditable', true);
-        span.focus();
+      
+        
+        if (e.target.classList.contains('fa-save')) {
+            span.setAttribute('contenteditable', true);
+            span.focus(); 
+        } else {
+            span.setAttribute('contenteditable', false);
+            span.blur(); 
+            editListItem( id, span.textContent);
+        }
     }
 });
 
