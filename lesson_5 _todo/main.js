@@ -46,6 +46,8 @@
 //как создать список ( несколько функций)
 
 let tasks = JSON.parse( localStorage.getItem('tasks') )|| [];
+// let tasks = [];
+
 
 let ul = document.querySelector('.list-group');
 let form = document.forms['addTodoItem'];
@@ -92,6 +94,8 @@ function clearList() {
 }
 
 function generateList(tasksArray) {
+    clearList();
+    
     for (let i = 0; i < tasks.length; i++) {
         let li = listTemplate(tasksArray[i]);
         ul.appendChild(li);
@@ -99,6 +103,8 @@ function generateList(tasksArray) {
         // либо так 
         // ul.appendChild(listTemplate(tasksArray[i]))
     }
+
+    return ul;
     // setDeleteEvent();
 }
 
@@ -107,12 +113,12 @@ function addLists(list) {
         id: generateId(),
         text: list
     };
-    
+
     tasks.unshift(newTask);
 
     ul.insertAdjacentElement('afterbegin', listTemplate(newTask));
     // add to localStorage
-    localStorage.setItem('tasks', JSON.stringify(newTask));
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 function deliteListItem(id) {
@@ -169,11 +175,10 @@ ul.addEventListener('click', function (e) {
         
         showAlert('alert-danger', 'Task has been removed success');
     } else if (e.target.classList.contains('edit-item')) {
-        e.target.classList.toggle('fa-seve');
+        e.target.classList.toggle('fa-save');
         let id = e.target.closest('li').dataset.id;
         let span = e.target.closest('li').querySelector('span');
-      
-        
+
         if (e.target.classList.contains('fa-save')) {
             span.setAttribute('contenteditable', true);
             span.focus(); 
