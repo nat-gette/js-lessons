@@ -40,35 +40,61 @@
 // console.log(user.getUserName());
 
 // // 4
-const module = {
-    height: 10,
-    plusCounter() {
-        return ++this.height;
-    },
-};
+// const module = {
+//     height: 10,
+//     plusCounter() {
+//         return ++this.height;
+//     },
+// };
 
-console.log(module.plusCounter());
-console.log(module.height);
+// console.log(module.plusCounter());
+// console.log(module.height);
 
-// 5
-const numerator = {
-    value: 5,
-    double() {
-        this.value += this.value;
-        console.log(this);
-        return this;
+// // 5
+// const numerator = {
+//     value: 5,
+//     double() {
+//         this.value += this.value;
+//         console.log(this);
+//         return this;
         
-    },
-    plusOne() {
-        ++this.value;
-        return this; 
-    },
-    minusOne() {
-        --this.value;
-        return this;
-    },
+//     },
+//     plusOne() {
+//         ++this.value;
+//         return this; 
+//     },
+//     minusOne() {
+//         --this.value;
+//         return this;
+//     },
+// };
+
+// console.log(numerator.double());
+// console.log(numerator.value);
+
+
+
+// -------- задачи по this (2)-------
+
+// 1. 
+// getList(); не выведет никакого результата,тк нет обращения к обьекту какому-либо, мб это будет undefiend
+// users.Getlist(); скорее всего выведет список имен,  не поняла зачем выше сделано приравнивание
+// getList.call(users); веррнет список имен  
+
+// проверка:
+function getList() { return this.list; } ;
+let users = {
+    length: 4,
+    list: ['Abraham', 'James', 'John', 'Steven']
 };
 
-console.log(numerator.double());
-console.log(numerator.value);
+getList();
 
+users.getList = getList;
+users.getList();
+getList.call(users);
+
+// ничего не вывелось ни в одном из вызовов ( не правильно что-то переписала?)
+
+
+// 2.
