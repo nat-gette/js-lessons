@@ -81,20 +81,94 @@
 // users.Getlist(); скорее всего выведет список имен,  не поняла зачем выше сделано приравнивание
 // getList.call(users); веррнет список имен  
 
-// проверка:
-function getList() { return this.list; } ;
-let users = {
-    length: 4,
-    list: ['Abraham', 'James', 'John', 'Steven']
-};
+// // проверка:
+// function getList() { return this.list; } ;
+// let users = {
+//     length: 4,
+//     list: ['Abraham', 'James', 'John', 'Steven']
+// };
 
-getList();
+// console.log(getList()); 
 
-users.getList = getList;
-users.getList();
-getList.call(users);
+// users.getList = getList;
+// console.log(users.getList());
+// console.log( getList.call(users));
 
+// let bainded = getLis.bind(users);
+// console.log(binded());
 // ничего не вывелось ни в одном из вызовов ( не правильно что-то переписала?)
 
 
 // 2.
+
+// const products = {
+//     price: 20,
+//     prodCount: 30,
+//     generalPrice(){
+//        return this.price * this.prodCount; 
+//     },
+// };
+
+// 3. 
+
+// const products = {
+//     price: 20,
+//     prodCount: 30,
+//     generalPrice(){
+//        return this.price * this.prodCount; 
+//     },
+// };
+
+// const details = {
+//     price: 20,
+//     prodCount: 30,
+// };
+
+// details.generalPrice = products.generalPrice;
+// console.log(details.generalPrice());
+
+// // 4.
+// let sizes = {
+//     width: 5,
+//     height: 10,
+// };
+// let getSquare = function () {
+//     return this.width * this.height;
+// };
+
+// console.log(getSquare.call(sizes));
+// console.log(getSquare.apply(sizes));
+
+// console.log(getSquare.bind(sizes)());
+
+// // 5.
+
+// let numbers = [4, 12, 0, 10, -2, 4];
+// console.log(Math.min.apply(null, numbers )); //или console.log(Math.min(...numbers));
+
+// // 6.
+
+// const element = {
+//     height: '15px',
+//     marginTop: '5px',
+//     marginBottom: '5px',
+//     getFullHeigth: function() {
+//         return parseInt(this.height) + parseInt(this.marginTop) + parseInt(this.marginBottom);
+//     },
+// };
+
+// const block = {height: '5px', marginTop: '3px', marginBottom: '3px'};
+
+// console.log(element.getFullHeigth.call(block));
+
+// console.log(element.getFullHeigth());
+
+//7.
+let element = {
+    height: 25,
+    getHeight: function() {
+        return this.height;
+    }
+};
+let getElementHeight = element.getHeight.bind(element) ;
+console.log(getElementHeight());
