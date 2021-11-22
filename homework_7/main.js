@@ -164,11 +164,218 @@
 // console.log(element.getFullHeigth());
 
 //7.
-let element = {
-    height: 25,
-    getHeight: function() {
-        return this.height;
+// let element = {
+//     height: 25,
+//     getHeight: function() {
+//         return this.height;
+//     }
+// };
+// let getElementHeight = element.getHeight.bind(element) ;
+// console.log(getElementHeight());
+
+// ---- лексическое окружение задачи---------
+
+// 1 
+
+// var userName = 'Ivan';
+
+// console.log(getBigName(userName));
+
+// function getBigName(name) {
+//     name = name + "";
+//     return name.toUpperCase();
+// }
+
+// 2
+
+// function test() {
+//     var name = 'Vasiliy';
+//     return getBigName(userName);
+// };
+
+
+// function getBigName(name) {
+//     name = name + '';
+//     return name.toUpperCase();    
+// };
+
+// var userName = 'Ivan';
+// console.log(test());
+
+
+// 3
+
+// let food = 'cucamber';
+
+// (function () {
+//     var food = 'bread';
+//     getFood();
+// })();
+
+// function getFood() {
+//     console.log(food);
+// };
+
+
+// -----замыкание функции-----
+
+// function someFunction(x){
+//     return x * x;
+// };
+
+// function bar(fun, arg){
+//     console.log(arg);
+//     res = fun(arg);
+//     console.log(res);
+// };
+
+// 1.
+
+// var dollar,
+//     getDollar;
+
+// (function() {
+//     var dollar = 0;
+//     getDollar = function() {
+//         return dollar;
+//     }
+// })();
+
+// dollar = 30;
+// console.log(getDollar());
+
+
+// 2.
+
+// var greet = "Hello";
+
+// (function (){
+//     var text = "World";
+//     console.log(greet + text);
+// })();
+// console.log(greet + text);
+
+// 3
+
+// function minus(arg1 = 0) {
+//     return function fn(arg2 = 0) {
+//         return arg1 - arg2;
+//     }
+// }
+// console.log(minus(10)(6));
+
+// 4
+
+// function MultyplyMaker(arg1) {
+//     let num = arg1;
+//     return function(arg2) {
+//         return num *= arg2;
+
+//     } 
+// }
+
+// // console.log(MultyplyMaker(2));
+// const multiply = MultyplyMaker(2);
+// console.log(multiply(2));
+// console.log(multiply(3));
+
+
+// 5
+
+// const module = (function() {
+
+//     let str ;
+
+//     function strSet(arg) {
+//         str =  arg + '';
+//     };
+
+//     function strGet(){
+//         return str;
+//     };
+
+//     function strLength() {
+//         return str.length;
+//     };
+    
+//     function strRevers() {
+//         str.split('').reverse().join('');
+//     };
+
+//     return{
+//         strSet: strSet,
+//         strGet: strGet,
+//         strLength: strLength,
+//         strRevers: strRevers,
+//     };
+// })();
+
+// module.strSet('abc');
+
+// console.log(module.strGet());
+
+// 6
+
+
+const calculator = (function() {
+
+    let num;
+
+    function setValue(val) {
+        num = val;
+        return this;
+    };
+    
+    function addValue(added) {
+        num += added;
+        return this;
+    };
+
+    function subtrValue(subtrahend) {
+        num -= subtrahend;
+        return this;
     }
-};
-let getElementHeight = element.getHeight.bind(element) ;
-console.log(getElementHeight());
+
+    function multiplyValue(multiplied) {
+        num *= multiplied;
+        return this;
+    };
+
+    function divideValue(divided) {
+        num /= divided;
+        return this;
+    };
+
+    function exponentiationValue(expon) {
+        num **= expon;
+        return this;
+    };
+
+
+    function getValue() {
+        
+        num = parseFloat(num.toFixed(2));
+        
+        return num;
+    }
+
+    return {
+        setValue: setValue,
+        addValue: addValue, 
+        subtrValue:  subtrValue,
+        divideValue: divideValue,
+        multiplyValue: multiplyValue,
+        exponentiationValue: exponentiationValue,
+        getValue: getValue,
+
+    }
+})();
+
+calculator.setValue(5.21334);
+
+// console.log(calculator.multiplyValue(4));
+// console.log(calculator.divideValue(2));
+// console.log(calculator.exponentiationValue(2));
+// console.log(calculator.getValue());
+
+console.log(calculator.addValue(10).divideValue(2).getValue());
