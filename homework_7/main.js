@@ -217,7 +217,7 @@
 // };
 
 
-// -----замыкание функции-----
+// -----1. замыкание функции-----
 
 // function someFunction(x){
 //     return x * x;
@@ -284,10 +284,10 @@
 
 // const module = (function() {
 
-//     let str ;
+//     let str = null ;
 
 //     function strSet(arg) {
-//         str =  arg + '';
+//         str =  String(arg);
 //     };
 
 //     function strGet(){
@@ -302,8 +302,8 @@
 //         str.split('').reverse().join('');
 //     };
 
-//     return{
-//         strSet: strSet,
+//     return {
+//         strSet,
 //         strGet: strGet,
 //         strLength: strLength,
 //         strRevers: strRevers,
@@ -319,7 +319,7 @@
 
 const calculator = (function() {
 
-    let num;
+    let num = 0;
 
     function setValue(val) {
         num = val;
@@ -353,20 +353,18 @@ const calculator = (function() {
 
 
     function getValue() {
-        
         num = parseFloat(num.toFixed(2));
-        
         return num;
     }
 
     return {
-        setValue: setValue,
-        addValue: addValue, 
-        subtrValue:  subtrValue,
-        divideValue: divideValue,
-        multiplyValue: multiplyValue,
-        exponentiationValue: exponentiationValue,
-        getValue: getValue,
+        setValue,
+        addValue, 
+        subtrValue,
+        divideValue,
+        multiplyValue,
+        exponentiationValue,
+        getValue,
 
     }
 })();
