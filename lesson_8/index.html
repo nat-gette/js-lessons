@@ -2,31 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>timer</title>
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="main.css"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="timer">
-        <div class="timer_controls">
-            <button data-time="20" class="timer__button"> 20 sec </button>
-            <button data-time="300" class="timer__button"> work 5 </button>
-            <button data-time="900" class="timer__button"> 2quick 15 </button>
-            <button data-time="1200" class="timer__button"> snack 20 </button>
-            <button data-time="3600" class="timer__button"> lunch break </button>
-            <form name="customForm" id="custom">
-                <input type="text" name="minutes" placeholder="Enter Min">
+        <div class="timer__controls">
+            <button data-time="20" class="timer__button">20 Secs</button>
+            <button data-time="300" class="timer__button">Work 5</button>
+            <button data-time="900" class="timer__button">Quick 15</button>
+            <button data-time="1200" class="timer__button">Snack 20</button>
+            <button data-time="3600" class="timer__button">Lunch Break</button>
+            <form  name="customForm" id="custom">
+                <input class="custom" type="text" name="minutes" placeholder="Enter Minutes">
             </form>
         </div>
         <div class="display">
             <h1 class="display__time-left"></h1>
             <p class="display__end-time"></p>
+            <div class="stop">Stop</div>
         </div>
     </div>
-    
-<script src="main.js"></script>
+
+    <script src="main.js"></script>
 </body>
 </html>

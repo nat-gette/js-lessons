@@ -1,0 +1,31 @@
+body {
+    background-color: #1C3334;
+    margin: 0;
+    padding: 0;
+}
+.timer {
+    width: 100%;
+}
+.timer__controls {
+    display: flex;
+}
+.timer__button {
+    width: 100%;
+    background-color: #376E6F ;
+    border: 0;
+    height: 75px;
+}
+#custom input {
+    height: 75px;
+    border: 0;
+}
+.display {
+    color: #DA7B93;
+    font-size: 45px;
+    width: 400px;
+    text-align: center;
+    margin: 0 auto;
+}
+.custom {
+    background-color: #2E151B;
+}
