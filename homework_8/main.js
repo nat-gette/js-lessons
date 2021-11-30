@@ -44,3 +44,72 @@
 // let days = Date.now() - new Date('2021.11.01');
 // let weeks = Math.floor(days/1000/60/60/24/7);
 // console.log(weeks);
+
+// -------------Таймеры-------------
+
+// 1
+
+
+
+// let str = 'test';
+// let i = 0;
+// let res = '';
+
+// let timer = setInterval(() => {
+
+//     if(i < str.length) {
+//         res += str[i];
+//         i++;
+        
+//         console.log(res);
+//     } else {
+//         clearInterval(timer);
+//     }
+//     console.log(1);
+// }, 1000);
+
+
+// 2 
+
+// function myFunc(str, time) {
+//     setTimeout(() => {
+//         console.log(str);
+//     }, time);
+// }
+
+// myFunc('test', 1000);
+
+// 3
+
+// let startDate = +new Date();
+// var index = 1000;
+
+// setTimeout(function countDown() {
+//     if(index--) {
+//         // console.log(index + '...');
+//         setTimeout(countDown, 1);
+//     } else {
+//         console.log('Boom');
+//         let endDate = +new Date();
+//         console.log(endDate - startDate);
+//     }
+// }, 1);
+
+
+// let startDate = +new Date();
+
+// var index = 1000;
+
+// var timer = setInterval(function countDown() {
+//     if(index--) {
+//         console.log(index + '...');
+//     } else {
+//         console.log('Boom');
+//         let endDate = +new Date();
+//         console.log(endDate - startDate);
+//         clearInterval(timer);
+//     }
+// }, 1);
+
+// одинаковые функции, опервая с рекурсией, но выводит одно и то же
+

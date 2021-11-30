@@ -20,6 +20,10 @@
 // Timet
 
 const buttons =  document.querySelectorAll('[data-time]');
+const stopBtn = document.querySelector('.stop');
+const form = document.forms.customForm;
+const input = form.querySelector('.custom');
+
 
 const timer = (function() {
     
@@ -27,6 +31,7 @@ const timer = (function() {
     let timerDisplay;
     let endTime;
     let alarmSound;
+    
 
     function init(settings) {
         
@@ -36,6 +41,8 @@ const timer = (function() {
         if (settings.alarmSound) {
             alarmSound = new Audio(settings.alarmSound);
         }
+
+        return this;
     };
 
     function start(seconds) {
@@ -69,24 +76,28 @@ const timer = (function() {
     };
 
     function displayTimeLeft(seconds) {
-        const minutes = Math.floor(seconds / 60);
+        const days =  Math.floor(seconds / 60 / 60 / 24);
+        const hours =  Math.floor(seconds % (60 * 60 * 24) / 60 / 60);
+        const minutes = Math.floor((seconds  % (60 * 60 * 24) % 3600) / 60);
         const reminderSeconds = seconds % 60;
 
-        const display = `${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`;
+        const display = `${days} Days ${hours}:${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`;
         document.title = display;
         timerDisplay.textContent = display;
     };
 
     function displayEndTime(timestamp) {
         const end = new Date(timestamp);
+        const day = end.getDate();
+        const month = end.getMonth() +1 ;
         const hour = end.getHours();
         const minutes = end.getMinutes();
 
-        endTime.textContent = `Be back at ${hour}:${minutes < 10 ? '0' : ''}${minutes}`;
+        endTime.textContent = `Be back at ${day}.${month}  ${hour}:${minutes < 10 ? '0' : ''}${minutes}`;
     };
 
     function stop() {
-
+        clearInterval(countdown);
     };
 
     function playSound() {
@@ -113,12 +124,18 @@ timer.init({
 function startTimer(e) {
     const seconds = parseInt(this.dataset.time);
     timer.start(seconds);
-
-    
 };
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    timer.start(parseInt(input.value));
+})
+
 
 buttons.forEach(btn => btn.addEventListener('click', startTimer));
 
+
+stopBtn.addEventListener('click', timer.stop);
 
 
 
