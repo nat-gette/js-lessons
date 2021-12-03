@@ -80,8 +80,9 @@ const timer = (function() {
         const hours =  Math.floor(seconds % (60 * 60 * 24) / 60 / 60);
         const minutes = Math.floor((seconds  % (60 * 60 * 24) % 3600) / 60);
         const reminderSeconds = seconds % 60;
+        
 
-        const display = `${days} Days ${hours}:${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`;
+        const display = `${days} Days ${hours}:${minutes < 10 ? '0' : ''}${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`;
         document.title = display;
         timerDisplay.textContent = display;
     };
@@ -89,7 +90,7 @@ const timer = (function() {
     function displayEndTime(timestamp) {
         const end = new Date(timestamp);
         const day = end.getDate();
-        const month = end.getMonth() +1 ;
+        const month = end.getMonth() + 1;
         const hour = end.getHours();
         const minutes = end.getMinutes();
 
