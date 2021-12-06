@@ -21,24 +21,64 @@
 // console.log(lexus.getName());
 // console.log(lexus.name);
 
+// 2
 
-function Coder(string) {
-    let newString = string;
+// function Coder(string) {
+//     let newString = string;
 
-    this.getSrting = function() {
-        return newString;
-    }
+//     this.getSrting = function() {
+//         return newString;
+//     }
 
-    this.reverseString = function() {
-        return newString.split('').reverse().join('');
+//     this.reverseString = function() {
+//         return newString.split('').reverse().join('');
     
 
-    this.clearString = function() {
-        return newString = '';
+//     this.clearString = function() {
+//         return newString = '';
+//     }
+// }
+
+// let str = new Coder('Nataly');
+
+// console.log(str.clearString());
+// console.log(str.getSrting());
+
+
+
+
+// 3
+
+function StringClass (str) {
+    this.str = str;
+
+    this.setStr = function(newStr) {
+        this.str = newStr;
     }
+
+    this.getStr = function(str) {
+        return this.str;
+    }
+
+    this.strLength = function(str) {
+        return this.str.length;
+    }
+
+    this.toString = function() {
+        this.str = String(this.str);
+    }
+
+    this.valueOf = function() {
+        return this.str.length;
+    }
+
 }
 
-let str = new Coder('Nataly');
+let str1 = new StringClass('test');
 
-console.log(str.clearString());
-console.log(str.getSrting());
+str1.setStr(123);
+str1.toString();
+console.log(str1.getStr());
+console.log(+str1);
+
+
