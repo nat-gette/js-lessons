@@ -44,9 +44,6 @@
 // console.log(str.clearString());
 // console.log(str.getSrting());
 
-
-
-
 // 3
 
 function StringClass (str) {
@@ -65,7 +62,7 @@ function StringClass (str) {
     }
 
     this.toString = function() {
-        this.str = String(this.str);
+        return this.str = String(this.str);
     }
 
     this.valueOf = function() {
@@ -77,8 +74,7 @@ function StringClass (str) {
 let str1 = new StringClass('test');
 
 str1.setStr(123);
-str1.toString();
+console.log(str1.toString());;
 console.log(str1.getStr());
 console.log(+str1);
-
 
