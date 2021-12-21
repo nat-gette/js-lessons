@@ -152,55 +152,101 @@
 
 
 
-// 3  
-function Furniture(name, price) {
+// // 3  
+// function Furniture(name, price) {
+//     this.name = name;
+//     this.price = price;
+// }
+
+// Furniture.prototype.getInfo =  function() {
+//     return {
+//         name : this.name,
+//         price: this.price,
+//     }
+// }
+
+// function OfficeFurniture(name, price, height) {
+//     Furniture.call(this, name, price);
+//     this.height = height;
+// }
+
+// OfficeFurniture.prototype = Object.create(Furniture.prototype);
+// OfficeFurniture.prototype.constructor = OfficeFurniture;
+
+// OfficeFurniture.prototype.getInfo = function() {
+//     let originInfo = Furniture.prototype.getInfo.call(this);
+//     originInfo.height = this.height;
+//     return originInfo;
+// }
+
+// function HomeFurniture(name, price, color) {
+//     Furniture.call(this, name, price);
+//     this.color = color;
+// }
+
+// HomeFurniture.prototype = Object.create(Furniture.prototype);
+// HomeFurniture.prototype.constructor = HomeFurniture;
+
+// HomeFurniture.prototype.getInfo = function() {
+//     let originInfo = Furniture.prototype.getInfo.call(this);
+//     originInfo.color = this.color;
+//     return originInfo;
+// }
+
+
+// let table1 = new Furniture('table1', 1120);
+// console.log(table1.getInfo());
+
+
+// let table = new OfficeFurniture('table', 120, 60);
+// console.log(table.getInfo());
+
+// let table2 = new HomeFurniture('table2', 120, 'red');
+// console.log(table2.getInfo());
+
+
+// 4
+
+function User(name, registrationDate) {
     this.name = name;
-    this.price = price;
+    this.registrationDate = registrationDate;
 }
 
-Furniture.prototype.getInfo =  function() {
+User.prototype.getInfo = function() {
     return {
-        name : this.name,
-        price: this.price,
+        name: this.name,
+        registrationDate: this.registrationDate,
     }
 }
 
-function OfficeFurniture(name, price, height) {
-    Furniture.call(this, name, price);
-    this.height = height;
+
+
+function Administrator(name, registrationDate, superAdmin) {
+    User.call(this, name, registrationDate);
+    this.superAdmin = superAdmin;
 }
 
-OfficeFurniture.prototype = Object.create(Furniture.prototype);
-OfficeFurniture.prototype.constructor = OfficeFurniture;
+Administrator.prototype = Object.create(User.prototype);
+Administrator.prototype.constructor = Administrator;
 
-OfficeFurniture.prototype.getInfo = function() {
-    let originInfo = Furniture.prototype.getInfo.call(this);
-    originInfo.height = this.height;
-    return originInfo;
-}
+Administrator.prototype.getInfo = function() {
+    let originInfo = User.prototype.getInfo.call(this);
 
-function HomeFurniture(name, price, color) {
-    Furniture.call(this, name, price);
-    this.color = color;
-}
-
-HomeFurniture.prototype = Object.create(Furniture.prototype);
-HomeFurniture.prototype.constructor = HomeFurniture;
-
-HomeFurniture.prototype.getInfo = function() {
-    let originInfo = Furniture.prototype.getInfo.call(this);
-    originInfo.color = this.color;
     return originInfo;
 }
 
 
-let table1 = new Furniture('table1', 1120);
-console.log(table1.getInfo());
 
+function Guest (name, registrationDate, validDate) {
+    User.call(this, name, registrationDate);
+    this.validDate = validDate;
+}
 
-let table = new OfficeFurniture('table', 120, 60);
-console.log(table.getInfo());
+Guest.prototype = Object.create(User.prototype);
+Guest.prototype.constructor = Guest;
 
-let table2 = new HomeFurniture('table2', 120, 'red');
-console.log(table2.getInfo());
+Guest.prototype.getInfo = function() {
+    let originInfo = User.prototype.getInfo.call(this);
 
+    return originInfo;
+}
