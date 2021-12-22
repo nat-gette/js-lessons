@@ -205,48 +205,141 @@
 // console.log(table2.getInfo());
 
 
-// 4
+// // 4
 
-function User(name, registrationDate) {
-    this.name = name;
-    this.registrationDate = registrationDate;
-}
+// function User(name, registrationDate) {
+//     this.name = name;
+//     this.registrationDate = registrationDate;
+// }
 
-User.prototype.getInfo = function() {
-    return {
-        name: this.name,
-        registrationDate: this.registrationDate,
-    }
-}
-
-
-
-function Administrator(name, registrationDate, superAdmin) {
-    User.call(this, name, registrationDate);
-    this.superAdmin = superAdmin;
-}
-
-Administrator.prototype = Object.create(User.prototype);
-Administrator.prototype.constructor = Administrator;
-
-Administrator.prototype.getInfo = function() {
-    let originInfo = User.prototype.getInfo.call(this);
-
-    return originInfo;
-}
+// User.prototype.getInfo = function() {
+//     return {
+//         name: this.name,
+//         registrationDate: this.registrationDate,
+//     }
+// }
 
 
 
-function Guest (name, registrationDate, validDate) {
-    User.call(this, name, registrationDate);
-    this.validDate = validDate;
-}
+// function Administrator(name, registrationDate, superAdmin) {
+//     User.call(this, name, registrationDate);
+//     this._superAdmin = superAdmin;
+// }
 
-Guest.prototype = Object.create(User.prototype);
-Guest.prototype.constructor = Guest;
+// Administrator.prototype = Object.create(User.prototype);
+// Administrator.prototype.constructor = Administrator;
 
-Guest.prototype.getInfo = function() {
-    let originInfo = User.prototype.getInfo.call(this);
+// Administrator.prototype.getInfo = function() {
+//     let originInfo = User.prototype.getInfo.call(this);
+//     originInfo['superAdmin'] = superAdmin;
+//     return originInfo;
+// }
 
-    return originInfo;
-}
+
+
+// function Guest (name, registrationDate) {
+//     User.call(this, name, registrationDate);
+//     this._validDate = new Date( +new Date(this.registrationDate) + 604800000).toLocaleDateString();
+// }
+
+// Guest.prototype = Object.create(User.prototype);
+// Guest.prototype.constructor = Guest;
+
+// Guest.prototype.getInfo = function() {
+//     let originInfo = User.prototype.getInfo.call(this);
+//     originInfo['validDate'] = validDate;
+//     return originInfo;
+// }
+
+
+// let newUser = new User('Nik', '06.06.21');
+// let newAdmin = new Administrator('Nik2', '07.07.21', true);
+// let newGuest = new Guest('Nik3', '08.08.21');
+
+
+// // 1.
+
+// function General() {
+//     this.test = true;
+//     this.parent = true;
+//     this.getInfo = function() {
+//         return {
+//             test: this.test, 
+//             parent: this.parent,
+//         };
+//     }
+// }
+
+
+// function GeneralChild() {
+//     General.call(this);
+//     this.parent = false;
+//     this.child = true;
+    
+
+//     let original = this.getInfo();
+
+//     this.getInfo = function() {
+//         original.child = this.child;
+//         return original;
+//     }
+
+// }
+
+// let child = new GeneralChild();
+
+
+// // 2
+// function Boy(name) {
+//     this.name = name;
+//     this.good = true;
+
+//     this.getName = function() {
+//         return `This boy's name is ${this.name}. He is ${this.good === true ? 'good':'bad'}.`
+//     }
+// }
+
+// function BadBoy(name) {
+//     Boy.call(this, name);
+//     this.good = false;
+
+//     let origin = this.getName();
+
+//     this.getName = function() {
+//         return ` ${origin} Don't be friends with him!`
+//     }
+// }
+
+// let vanya = new Boy('Vanya');
+// let lenya = new BadBoy('Lenya');
+
+// // 3
+
+// function Fruit(name, color) {
+//     this.name = name;
+//     this.color = color;
+
+//     this.getInfo = function() {
+//         return `Fruit - ${this.name}, color - ${this.color}`
+//     }
+// }
+
+// function SweetFruit(name, color) {
+//     Fruit.call(this, name, color); 
+//     this.sweetness = true;
+
+//     let origin = this.getInfo();
+
+//     this.getInfo = function() {
+//         return  ` ${origin} , sweetness - ${this.sweetness === true? 'sweet':'not sweet'}`
+//     }
+
+//     this.setSweetness = function(newSweetness) {
+//         this.sweetness = newSweetness;
+//     }
+// }
+
+// let orange = new SweetFruit('aple', 'red');
+// orange.setSweetness(false);
+
+
