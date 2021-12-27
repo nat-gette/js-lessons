@@ -320,7 +320,7 @@
 //     this.color = color;
 
 //     this.getInfo = function() {
-//         return `Fruit - ${this.name}, color - ${this.color}`
+//         return `Fruit - ${this.name}, color - ${this.color} `
 //     }
 // }
 
@@ -331,7 +331,7 @@
 //     let origin = this.getInfo();
 
 //     this.getInfo = function() {
-//         return  ` ${origin} , sweetness - ${this.sweetness === true? 'sweet':'not sweet'}`
+//         return `${origin} , sweetness - ${this.sweetness === true? 'sweet':'not sweet'}`
 //     }
 
 //     this.setSweetness = function(newSweetness) {
@@ -342,4 +342,79 @@
 // let orange = new SweetFruit('aple', 'red');
 // orange.setSweetness(false);
 
+
+// прототипное наследование
+
+// 1
+// Дан класс User. Создать наследника NewUser, у которого метод setNewName будет ко всему создавать новое свойство this.changed = “The field ‘name’ was changed!”.
+
+function User(name, age) {
+    this.name = name || 'Unknown';
+    this.age = age || 0;
+}
+
+User.prototype.setNewName = function (name) {
+    this.name = name;
+};
+
+function NewUser(name, age ) {
+    User.call(this, name, age)
+}
+
+NewUser.prototype = Object.create(User.prototype);
+NewUser.prototype.constructor = NewUser;
+
+NewUser.prototype.setNewName = function(name) {
+    const oldName = this.name;
+    User.prototype.setNewName.call(this, name);
+    this.changed = `The fieled name ${oldName} was changed on ${this.name}`;
+}
+
+
+
+// 2
+// Дан абстрактный класс Module. 
+// Разобраться, что он делает и как работает.
+// Создать наследника NewModule. Его setGlobalName должен делать всё то же самое, что и родительская функция, + устанавливать this.length = this.name.length.
+
+
+function Module(name) {
+    if (typeof name !== 'string') {
+        throw 'Enter a name!';
+    }
+    
+    this.getName = function () {
+        return name;
+    };
+};
+    
+Module.prototype.getPrettyName = function () {
+    let name = this.getName();  
+    name = name.replace(/\s+/, '_');  
+    return 'The module name is ' + name[0].toUpperCase() + name.substr(1);
+};
+    
+Module.prototype.setGlobalName = function (prefix) {
+    let name = this.getName();
+    this.name = prefix ? prefix + '_' + name : name; 
+};
+    
+
+function NewModule(name) {
+    Module.call(this, name);
+}
+
+NewModule.prototype = Object.create(Module.prototype);
+NewModule.prototype.constructor = NewModule;
+
+NewModule.prototype.setGlobalName = function (prefix) {
+    Module.prototype.setGlobalName.call(this, prefix);
+    this.length = this.name.length;
+}
+
+let module = new NewModule('nat');
+
+console.log(module.getPrettyName());
+console.log(module.setGlobalName('g'));
+console.log(module.getName());
 
