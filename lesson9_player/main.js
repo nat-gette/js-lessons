@@ -8,6 +8,7 @@ class VideoPlayer {
         this.toggle = this.player.querySelector('.toggle');
         this.skipButtons = this.player.querySelectorAll('[data-skip');
         this.ranges = this.player.querySelectorAll('.player__slider');
+        this.mouseDown = false;
     }
     init() {
         this.events();
@@ -20,8 +21,11 @@ class VideoPlayer {
         this.ranges.forEach(range => range.addEventListener('change', e => this.handleRangeUpdate(e)));
         this.ranges.forEach(range => range.addEventListener('mousemove', e => this.handleRangeUpdate(e)));
         this.skipButtons.forEach(btn => btn.addEventListener('click', e => this.skip(e)));
+        this.progress.addEventListener('click', e => this.scrub(e)); 
+        this.progress.addEventListener('mousemove', e => this.scrub(e));
+        this.progress.addEventListener('mousedown', () => this.mouseDown = true);
+        this.progress.addEventListener('mouseup', () => this.mouseDown = false);
 
-        this.progress.addEventListener('click', e => this.handles ПЕРЕИМЕНОВАТЬ В "ПЕРЕМОТКА"(e)); 
         
     }
 
@@ -38,13 +42,15 @@ class VideoPlayer {
     skip(e) {
         this.video.currentTime += parseFloat(e.target.dataset.skip);
     }
-    handleProgress() {
+    handleProgress(e) {
         let percent = (this.video.currentTime / this.video.duration) * 100;
         this.progressBar.style.flexBasis = percent + '%';
     }
 
-    handle(e) {
-        debugger
+    scrub(e) {
+        if (this.mouseDown) {
+        this.video.currentTime = (e.offsetX / this.progress.offsetWidth) * this.video.duration;
+        }
     }
 }
 
