@@ -90,3 +90,32 @@
 //каждая последняя буква в предложении большая, пробелы убрать сделать функцией, которая принимает аргументом  предложение (и i-n) , а вторым номер символа от пробела
 
 
+
+// Реализуйте и экспортируйте по умолчанию функцию, которая высчитывает среднее арифметическое элементов переданного массива. Благодаря этой функции мы наконец-то посчитаем среднюю температуру по больнице :)
+// В случае пустого массива функция должна вернуть значение null (используйте в коде для этого guard expression):
+
+
+
+const calculateAverage = (arrTemperatures) => {
+    if (!arrTemperatures.length) {
+        return null;
+    }
+
+    // let summTemp = 0;
+    // for (i = 0; i < arrTemperatures.length; i++) {
+        
+    //     summTemp += arrTemperatures[i];
+    // }
+    // for (const value of arrTemperatures) {
+    //     summTemp += value;
+    // }
+    
+    return arrTemperatures.reduce((sum, item) => sum += item, 0)/ arrTemperatures.length;
+
+    // return summTemp / arrTemperatures.length;
+};
+
+const temperatures1 = [37.5, 34, 39.3, 40, 38.7, 41.5];
+console.log(calculateAverage(temperatures1)); // 38.5
+const temperatures2 = [36, 37.4, 39, 41, 36.6];
+console.log(calculateAverage(temperatures2)); // 38

@@ -111,13 +111,13 @@ function checkEmptyList () {
         emptyListAlert.classList.add('alert-tasks-active');
         emptyListAlert.classList.add('alert-info');
         emptyListAlert.textContent = 'Empty list';
-       
+
     } else {
 
         emptyListAlert.classList.remove('alert-tasks-active');
         emptyListAlert.classList.remove('alert-info');
         emptyListAlert.textContent = '';
-       
+    
     }
 
 }

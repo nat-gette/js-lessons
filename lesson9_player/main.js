@@ -49,7 +49,7 @@ class VideoPlayer {
 
     scrub(e) {
         if (this.mouseDown) {
-        this.video.currentTime = (e.offsetX / this.progress.offsetWidth) * this.video.duration;
+            this.video.currentTime = (e.offsetX / this.progress.offsetWidth) * this.video.duration;
         }
     }
 }
