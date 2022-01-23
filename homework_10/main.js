@@ -42,8 +42,8 @@ const generateList = (users) => {
 const showModal = (user, x, y) => {
     modalUl.innerHTML = "";
     modal.classList.add('modal--active');
-    // modal.style.left = `${y}px` ;
-    // modal.style.right = `${x}px` ;
+    modal.style.top = `${y}px` ;
+    modal.style.left = `${x}px` ;
 
     let name = generateItemModal('name', user.textContent);
     let gender = generateItemModal('gender', user.dataset.gender);
