@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .modal {
+        position: absolute;
+        display: none;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid red;
+    }
+    .modal ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .modal--active {
+        display: block;
+    }
+    .btn--modal {
+        position: relative;
+        left: 80%;
+        padding: 0;
+        width: 15px;
+        border-radius: 50px;
+    }
+</style>
+<body>
+    <div class="modal">
+        <button class="btn--modal"> &#215; </button>
+        <ul>
+
+        </ul>
+    </div>
+    <button class="btn_users">Получить юзеров</button>
+    <ul class="users_list"></ul>
+    <script src="ajax.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
