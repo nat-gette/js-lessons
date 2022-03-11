@@ -96,26 +96,156 @@
 
 
 
-const calculateAverage = (arrTemperatures) => {
-    if (!arrTemperatures.length) {
-        return null;
-    }
+// const calculateAverage = (arrTemperatures) => {
+//     if (!arrTemperatures.length) {
+//         return null;
+//     }
 
-    // let summTemp = 0;
-    // for (i = 0; i < arrTemperatures.length; i++) {
+//     // let summTemp = 0;
+//     // for (i = 0; i < arrTemperatures.length; i++) {
         
-    //     summTemp += arrTemperatures[i];
-    // }
-    // for (const value of arrTemperatures) {
-    //     summTemp += value;
-    // }
+//     //     summTemp += arrTemperatures[i];
+//     // }
+//     // for (const value of arrTemperatures) {
+//     //     summTemp += value;
+//     // }
     
-    return arrTemperatures.reduce((sum, item) => sum += item, 0)/ arrTemperatures.length;
+//     return arrTemperatures.reduce((sum, item) => sum += item, 0)/ arrTemperatures.length;
 
-    // return summTemp / arrTemperatures.length;
-};
+//     // return summTemp / arrTemperatures.length;
+// };
 
-const temperatures1 = [37.5, 34, 39.3, 40, 38.7, 41.5];
-console.log(calculateAverage(temperatures1)); // 38.5
-const temperatures2 = [36, 37.4, 39, 41, 36.6];
-console.log(calculateAverage(temperatures2)); // 38
+// const temperatures1 = [37.5, 34, 39.3, 40, 38.7, 41.5];
+// console.log(calculateAverage(temperatures1)); // 38.5
+// const temperatures2 = [36, 37.4, 39, 41, 36.6];
+// console.log(calculateAverage(temperatures2)); // 38
+
+
+
+// Дано неотрицательное целое число num. Складывать все входящие в него цифры до тех пор, пока не останется одна цифра.
+// Для числа 38 процесс будет выглядеть так:
+// 1. 3 + 8 = 11
+// 2. 1 + 1 = 2
+// Результат: 2
+
+// function sum(num) {
+//     if (String(num).length == 1) {
+//         return num;
+//     } else {
+//         return sum(culcArg(num));
+//     }
+// }
+
+// function culcArg(num) {
+//     let args = String(num);
+//     let res = 0;
+
+//     for (let i = 0; i < args.length; i += 1) {
+//         res+= +args[i];
+//     }
+
+//     return res;
+// }
+
+// console.log(sum(1259));
+
+// 
+// // Сделайте функцию arrayFill, которая будет заполнять массив заданными значениями. Первым параметром функция принимает значение, которым заполнять массив, а вторым - сколько элементов должно быть в массиве. Пример: arrayFill('x', 5) сделает массив ['x', 'x', 'x', 'x', 'x'].
+
+// function arrayFill(value, length) {
+//     let array = [];
+
+//     for (let i = 0; i < length; i += 1) {
+//         array.push(value);
+//     }
+
+//     return array;
+// }
+
+// console.log(arrayFill('x', 5));
+
+
+// // Дан массив с числами. Узнайте сколько элементов с начала массива надо сложить, чтобы в сумме получилось больше 10-ти
+
+// function moreThan(arr, minNum) {
+//     let sumRes = 0;
+//     let elemNum = 0;
+
+//     for (let i = 0; i < arr.length; i += 1){
+//         sumRes += arr[i];
+//         elemNum += 1;
+
+//         if (sumRes > minNum) {
+//             return elemNum;
+//         } 
+//     }
+// }
+
+// console.log(moreThan([1,2,3,4,5,6,7,8,9], 10));
+
+
+
+// // Задача 1. Реализуйте swap(), которая меняет местами первый и последний элемент массива. Если массив содержит меньше двух элементов, то он возвращается как есть.
+// // Примеры вызова:
+// // swap([]); // []
+// // swap([1]); // [1]
+// // swap([1, 2]); // [2, 1]
+// // swap(['one', 'two', 'three']); // ['three', 'two', 'one']
+
+
+// function swap(arr) {
+//     let changedArr = [];
+
+//     if (arr.length < 2) {
+//         return arr;
+//     } else {
+//         let arrMid = arr.slice(1, arr.length-1);
+        
+//         changedArr.push(arr[arr.length - 1]);
+
+//         for(let i = 0; i < arrMid.length; i += 1) {
+//             changedArr.push(arrMid[i]);
+//         };
+
+//         changedArr.push(arr[0]);
+
+//         return changedArr;
+//     }
+// }
+
+// function swap2(arr) {
+
+//     if (arr.length < 2) {
+//         return arr;
+//     }       
+
+//     let changedArr = [];
+//     changedArr.push(arr[arr.length - 1]);
+
+//     let arrMid = arr.slice(1, arr.length-1);
+//     for(let i = 0; i < arrMid.length; i += 1) {
+//         changedArr.push(arrMid[i]);
+//     };
+
+//     changedArr.push(arr[0]);
+//     return changedArr;
+    
+// }
+
+// console.log(swap2y([1, 'two', 3, '4']))
+
+
+
+
+// Задача 2. Реализуйте функцию, которая извлекает из массива элемент по указанному индексу, если индекс существует, либо возвращает значение по умолчанию. Функция принимает на вход три аргумента:
+// Массив
+// Индекс
+// Значение по умолчанию (равно null)
+// const cities = ['moscow', 'london', 'berlin', 'porto'];
+ 
+// get(cities, 1); // 'london'
+// get(cities, 4); // null
+// get(cities, 10, 'paris'); // 'paris'
+// get(cities, -1, 'oops'); // 'oops'
+// Подсказки
+// Для параметров функции можно указывать значения по умолчанию прям при объявлении: (param = 'default value')
