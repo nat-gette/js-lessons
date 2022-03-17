@@ -236,6 +236,22 @@
 
 
 
+// // Сделайте функцию arrayFill, которая будет заполнять массив заданными значениями. Первым параметром функция принимает значение, которым заполнять массив, а вторым - сколько элементов должно быть в массиве. Пример: arrayFill('x', 5) сделает массив ['x', 'x', 'x', 'x', 'x'].
+
+
+// function arrayFill(arg, num) {
+//     let arr = [];
+
+//     for (let i = 0; i < num; i += 1) {
+//         arr.push(arg);
+//     }
+
+//     return arr;
+// }
+
+// console.log(arrayFill('x', 5));
+
+
 
 // Задача 2. Реализуйте функцию, которая извлекает из массива элемент по указанному индексу, если индекс существует, либо возвращает значение по умолчанию. Функция принимает на вход три аргумента:
 // Массив
@@ -249,3 +265,242 @@
 // get(cities, -1, 'oops'); // 'oops'
 // Подсказки
 // Для параметров функции можно указывать значения по умолчанию прям при объявлении: (param = 'default value')
+
+
+// const cities = ['moscow', 'london', 'berlin', 'porto'];
+
+// function getElem(arr, index, value = null ) {
+//     if (index >= arr.length || index < 0) {
+//         return value;
+//     }
+
+//     return arr[index];
+// }
+
+// console.log( getElem(cities, 1));
+// console.log( getElem(cities, 4));
+// console.log( getElem(cities, 10, 'paris'));
+// console.log( getElem(cities, -1, 'opps'));
+
+
+// Задача 3. Реализуйте и экспортируйте по умолчанию функцию, которая принимает на вход массив и строковой префикс, и возвращает новый массив, в котором к каждому элементу исходного массива добавляется переданный префикс. Функция предназначена для работы со строковыми элементами. После префикса автоматически добавляется пробел.
+// import addPrefix from './arrays.js';
+ 
+// const names = ['john', 'smith', 'karl'];
+ 
+// const newNames = addPrefix(names, 'Mr');
+// console.log(newNames);
+// // => ['Mr john', 'Mr smith', 'Mr karl'];
+ 
+// console.log(names); // Старый массив не меняется!
+// // => ['john', 'smith', 'karl'];
+
+// const names = ['john', 'smith', 'karl'];
+
+// function addPrefix(arr, prefix) {
+//     const newArr = [];
+
+//     for (i = 0; i < arr.length; i +=1) {
+//         let newElem = `${prefix} ${arr[i][0].toUpperCase()}${arr[i].slice(1)}`;
+//         newArr.push(newElem);
+//     }
+
+//     return newArr;
+// }
+
+// const newNames = addPrefix(names, 'Mr');
+// console.log(newNames);
+
+
+
+// Задача 4. Реализуйте и экспортируйте функцию `reverse()`, которая принимает на вход массив и располагает элементы внутри него в обратном порядке.
+// Примеры 
+// import { reverse } from './arrays'; 
+
+// const names = ['john', 'smith', 'karl'];
+
+// reverse(names); 
+// console.log(names); // => ['karl', 'smith', 'john'] 
+// reverse(names); 
+// console.log(names); // => ['john', 'smith', 'karl']
+
+// Решение этой задачи подразумевает самостоятельную реализацию функции без использования встроенного метода `reverse()`.
+// Подсказки
+// Для решения этой задачи, проще всего брать и менять местами элементы стоящие на зеркальных местах: первый и последний, второй и предпоследний и так далее до середины.
+
+// const names = ['john', 'smith', 'karl'];
+
+// function rewerse(arr) {
+//     const newNames = [];
+
+//     for (let i = arr.length - 1; i >= 0; i -= 1) {
+//         newNames.push(arr[i]);
+//     }
+
+//     return newNames;
+// }
+
+// console.log(rewerse(names));
+
+
+
+
+
+// Задача 5. Реализуйте  функцию, которая высчитывает сумму всех элементов массива, которые делятся без остатка на 3 (три).
+// Примеры
+// const coll1 = [8, 9, 21, 19, 18, 22, 7];
+// calculateSum(coll1); // 48
+ 
+// const coll2 = [2, 0, 17, 3, 9, 15, 4];
+// calculateSum(coll2); // 27
+// В случае пустого массива функция должна вернуть 0 (для этого в коде можно использовать guard expression):
+// const coll = [];
+// calculateSum(coll);// 0
+
+
+// const coll1 = [8, 9, 21, 19, 18, 22, 7];
+// const coll2 = [2, 0, 17, 3, 9, 15, 4];
+
+// function calculateSum(arr) {
+//     if (!arr.length) {
+//         return 0;
+//     };
+
+//     let result = 0;
+
+//     for (let i = 0; i < arr.length; i += 1) {
+//         if (arr[i] % 3 == 0) {
+//             result += arr[i];
+//         }
+//     };
+
+//     return result;
+// }
+
+// console.log(calculateSum(coll2));
+
+
+
+
+
+// Задача 6. Реализуйте функцию, которая высчитывает среднее арифметическое элементов переданного массива. Благодаря этой функции мы наконец-то посчитаем среднюю температуру по больнице :)
+// Примеры 
+// const temperatures1 = [37.5, 34, 39.3, 40, 38.7, 41.5]; 
+// calculateAverage(temperatures1); // 38.5 
+// const temperatures2 = [36, 37.4, 39, 41, 36.6]; 
+// calculateAverage(temperatures2); // 38
+// В случае пустого массива функция должна вернуть значение null (используйте в коде для этого guard expression):
+// const temperatures = []; 
+// calculateAverage(temperatures); // null
+
+
+// const temperatures1 = [37.5, 34, 39.3, 40, 38.7, 41.5]; 
+
+// function calculateAverage(arr) {
+    
+//     let patients = 0;
+//     let summ = 0;
+
+//     for (let i = 0; i < arr.length; i +=1) {
+//         summ += arr[i];
+//         patients +=1;
+//     };
+
+//     return summ/patients;
+// }
+
+// console.log(calculateAverage(temperatures1));
+
+
+
+
+
+// Задача 7. Реализуйте функцию getSameParity, которая принимает на вход массив чисел и возвращает новый, состоящий из элементов, у которых такая же чётность, как и у первого элемента входного массива. Экспортируйте функцию по умолчанию.
+
+// Примеры
+// getSameParity([]);        // []
+// getSameParity([1, 2, 3]); // [1, 3]
+// getSameParity([1, 2, 8]); // [1]
+// getSameParity([2, 2, 8]); // [2, 2, 8]
+
+
+// function getSameParity(arr) {
+//     let result = [];
+//    
+//     for (let i = 0; i < arr.length; i += 1) {
+//         if (arr[0] % 2 == 0 && arr[i] % 2 == 0) {
+//             result.push(arr[i]);
+//         } 
+//     }
+//     for (let i = 0; i < arr.length; i += 1) {
+//         if (arr[0] % 2 && arr[i] % 2 ) {
+//             result.push(arr[i]);
+//         } 
+//     }
+
+//     return result;
+// }
+
+// console.log( getSameParity([1, 2, 3]));
+// console.log( getSameParity([2, 1, 4]));
+// console.log( getSameParity([]));
+
+
+// function getSameParity(arr) {
+//     let result = [];
+    
+//     for (let i = 0; i < arr.length; i += 1) {
+//         if (arr[0] % 2 == arr[i] % 2) {
+//             result.push(arr[i]);
+//         } 
+//     }
+
+//     return result;
+// }
+
+// console.log( getSameParity([1, 2, 3]));
+// console.log( getSameParity([2, 1, 4]));
+// console.log( getSameParity([]));
+
+
+
+
+
+// Задача 8.
+// Реализуйте и экспортируйте по умолчанию функцию, которая принимает на вход в виде массива кошелёк с деньгами и название валюты и возвращает сумму денег указанной валюты.
+// Реализуйте данную функцию используя управляющие инструкции.
+// Параметры функции:
+// Массив, содержащий купюры разных валют с различными номиналами
+// Наименование валюты
+// Примеры
+// const money1 = [
+//   'eur 10', 'usd 1', 'usd 10', 'rub 50', 'usd 5',
+// ];
+// getTotalAmount(money1, 'usd') // 16
+
+// const money2 = [
+//   'eur 10', 'usd 1', 'eur 5', 'rub 100', 'eur 20', 'eur 100', 'rub 200',
+// ];
+// getTotalAmount(money2, 'eur') // 135
+
+
+// const money1 = ['eur 10', 'usd 1', 'usd 10', 'rub 50', 'usd 5',];
+// const money2 = ['eur 10', 'usd 1', 'eur 5', 'rub 100', 'eur 20', 'eur 100', 'rub 200',];
+
+// function getTotalAmount(arr, currency) {
+//     let result = 0;
+
+//     for (let i = 0; i < arr.length; i += 1) {
+//         let currencyName = arr[i].slice(0, 3);
+//         let amount = arr[i].slice(3);
+
+//         if (currencyName == currency) {
+//             result += +amount;
+//         };
+//     };
+
+//     return result;
+// }
+
+// console.log(getTotalAmount(money1, 'usd'));
+// console.log(getTotalAmount(money2, 'eur'));
