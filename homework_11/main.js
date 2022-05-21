@@ -285,13 +285,140 @@ let urls = [
 // .then(responseList => responseList.forEach(resp => resp.json().then(data => console.log(data.length))))
 // 
 
-Promise.all([
-    fetch(urls[0]),
-    fetch(urls[1])
-]).then(async function (responseList) {
-    postResponse = responseList[0];
-    userResponse = responseList[1];
-    let postMessage = await postResponse.json().then(data => `We have ${data.length} posts`);
-    let userMessage = await userResponse.json().then(data => `We have ${data.length} users`);
-    console.log(postMessage, userMessage)
+// Promise.all([
+//     fetch(urls[0]),
+//     fetch(urls[1])
+// ]).then(async function (responseList) {
+//     postResponse = responseList[0];
+//     userResponse = responseList[1];
+//     let postMessage = await postResponse.json().then(data => `We have ${data.length} posts`);
+//     let userMessage = await userResponse.json().then(data => `We have ${data.length} users`);
+//     console.log(postMessage, userMessage)
+// })
+
+
+
+// ---Решение Никиты
+
+// let getPosts = function() {
+//     return new Promise((resolve, reject) => {
+//       fetch('https://jsonplaceholder.typicode.com/posts', {
+//         method: 'GET'
+//       })
+//         .then((res) => resolve(res.json()))
+//         .catch(err => reject(err))
+//     })
+//   };
+  
+//   let getUsers = function() {
+//     return new Promise((resolve, reject) => {
+//       fetch('https://jsonplaceholder.typicode.com/users', {
+//         method: 'GET'
+//       })
+//         .then((res) => resolve(res.json()))
+//         .catch(err => reject(err))
+//     })
+//   };
+  
+//   // getPosts().then(data => console.log(data));
+  
+//   Promise.all([
+//     getPosts()
+//       // .then(data => data)
+//       .then(data => {
+//         let countPosts = 'Количество постов = ' + data.length;
+//         return countPosts;
+//       }),
+//     getUsers()
+//       // .then(data => data)
+//       .then(data => {
+//         let countUsers = 'Количество пользователей = ' + data.length;
+//         return countUsers;
+//       })
+//   ])
+//     .then(data => console.log(data));
+
+
+// и еще один Никиты
+
+// const posts = fetch('https://jsonplaceholder.typicode.com/posts', { method: 'GET' });
+// const users = fetch('https://jsonplaceholder.typicode.com/users', { method: 'GET' });
+
+// Promise.all([
+//     new Promise(response => {
+//     posts
+//         .then(res => res.json())
+//         .then(posts => response('posts: ' + posts.length))
+//     }),
+//     new Promise(response => {
+//     users
+//         .then(res => res.json())
+//         .then(users => response('users: ' + users.length))
+//     })
+// ]).then(data => console.log(data))
+
+
+
+
+///1
+
+// const prom = async () => {
+//     await setTimeout(() => {
+//         console.cog('ok');
+//     }, 3000)
+// };
+
+// prom();
+
+
+
+// // 2
+
+// const prom = () => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(function() {
+//             reject('err')
+//         }, 3000);
+//     });
+// }
+
+// prom().then().catch(console.log)
+
+
+// 3 Задача : Сделайте функцию, которая будет генерировать случайные числа от 1 до 10. 
+// Сделайте так, чтобы сгенерированное число было задержкой функции setTimeout в секундах.
+//  Оберните все это в промис. Пусть промис выполнится успешно, если сгенерировано число от 1 до 5, и с ошибкой - если от 6 до 10.
+
+
+let prom = new Promise ((resolve, reject) => {
+
+    function randomNum(min, max) {
+        return Math.floor(Math.random() * (max - min + 1 )) + min;
+    }
+    let succesNum;
+
+    function res() {
+        let num = randomNum(1, 10);
+        
+        if (num <= 5) {
+            stm(num);
+            resolve("success");
+        } else {
+            reject('err');
+            // console.log(`it's ${num}`);
+            // res();
+        }
+    }
+    res();
+    function stm (num) {
+        setTimeout (() => {
+            console.log(`it's ${num}`);
+        }, num * 1000); 
+    }
+
 })
+
+prom.then(r => console.log(r)).catch(er => console.log(er, `it's ${num}`));
+
+
+
