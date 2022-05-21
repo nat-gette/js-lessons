@@ -211,9 +211,9 @@
 //     });
 
 
-const server = new JsonPlaceholder();
+// const server = new JsonPlaceholder();
 
-server.getPosts(1) 
-    .then(data => data.id)
-    .then(server.getCommentsById)
-    .then(comments => console.log(comments));
+// server.getPosts(1) 
+//     .then(data => data.id)
+//     .then(server.getCommentsById)
+//     .then(comments => console.log(comments));

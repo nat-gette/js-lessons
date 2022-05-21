@@ -129,65 +129,169 @@
 
 
 //         Напишите функцию filterRangeInPlace(arr, a, b), которая принимает массив arr и удаляет из него все значения кроме тех, которые находятся между a и b. То есть, проверка имеет вид a ≤ arr[i] ≤ b.
-//         Функция должна изменять принимаемый массив и ничего не возвращать.
+// //         Функция должна изменять принимаемый массив и ничего не возвращать.
 
-let arr = [5, 3, 8, 1];
+// let arr = [5, 3, 8, 1];
 
-function filterRangeInPlace (arr, from, before) {
-    for(let i = 0; i < arr.length; i += 1) {
-        if (arr[i] < from || arr[i] > before) {
-            arr.splice(i, 1)
-        }
-    }
-}
+// function filterRangeInPlace (arr, from, before) {
+//     for(let i = 0; i < arr.length; i += 1) {
+//         if (arr[i] < from || arr[i] > before) {
+//             arr.splice(i, 1)
+//         }
+//     }
+// }
 
 
-filterRangeInPlace(arr, 1, 4); 
-console.log(arr);
+// filterRangeInPlace(arr, 1, 4); 
+// console.log(arr);
 
-//          У вас есть массив объектов user, и в каждом из них есть user.name. 
-//          Напишите код, который преобразует их в массив имён.
+// //          У вас есть массив объектов user, и в каждом из них есть user.name. 
+// //          Напишите код, который преобразует их в массив имён.
 
-let users = [
-    { name: "Вася", age: 25 },
-    { name: "Петя", age: 30 },
-    { name: "Маша", age: 28 },
-];
+// let users = [
+//     { name: "Вася", age: 25 },
+//     { name: "Петя", age: 30 },
+//     { name: "Маша", age: 28 },
+// ];
 
-let names = users.map(item => item.name);
-console.log(names);
+// let names = users.map(item => item.name);
+// console.log(names);
 
-// or
+// // or
 
-let vasya = { name: "Вася", age: 25 };
-let petya = { name: "Петя", age: 30 };
-let masha = { name: "Маша", age: 28 };
+// let vasya = { name: "Вася", age: 25 };
+// let petya = { name: "Петя", age: 30 };
+// let masha = { name: "Маша", age: 28 };
 
-let users1= [ vasya, petya, masha ];
+// let users1= [ vasya, petya, masha ];
 
-let names1= users.map(function(item) {
-    return item.name;
+// let names1= users.map(function(item) {
+//     return item.name;
+// })
+// console.log(names1);
+
+
+// //          Напишите функцию getAverageAge(users), которая принимает массив объектов со свойством age и возвращает средний возраст.
+// //          Формула вычисления среднего арифметического значения: (age1 + age2 + ... + ageN) / N.
+
+
+// let vasya1 = { name: "Вася", age: 20 };
+// let petya1 = { name: "Петя", age: 30 };
+// let masha1 = { name: "Маша", age: 40 };
+
+// let arr1 = [ vasya1, petya1, masha1 ];
+
+// function getAverageAge(arr) {
+//     let allAge = arr.reduce((sum, item) => sum + item.age, 0);
+
+//     return allAge / arr.length;
+// }
+
+// console.log( getAverageAge(arr1));
+
+
+
+// Promise: tasks
+// 1. Создать функцию, которая возвращает промис. Функция принимает два аргумента - время, через которое промис должен 
+// выполниться, и значение, с которым промис будет выполнен
+
+// function promiseCreator(time, answer) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve(answer);
+//         }, time);
+//     })
+// }
+
+// const prom = promiseCreator(500, 'Ok!')
+//     .then(console.log);
+
+
+// 2. Используя fetch метод, создать get запрос к адресу https://jsonplaceholder.typicode.com/posts
+// Отобразить в списке ul полученные поля из response. Показывать только id и title поля
+// let posts;
+// const promise = fetch('https://jsonplaceholder.typicode.com/posts', {
+//     method: 'GET',
+// })
+
+// promise.then(response => response.json()).then(data => {
+//     generateList(data);
+// })
+
+
+// --или
+// promise.then(async function (response) {
+//     let data = await response.json();
+//     generateList(data);
+// })
+// ---
+
+// function generateList(data) {
+//     console.log(data)
+// }
+
+// function generateTemplate(item) {
+//     let elem = document.createElement('li')
+//     li.innerText = item.id + ' - ' + item.title;    
+// }
+
+
+// 3.Выполнить два запроса: 
+// - https://jsonplaceholder.typicode.com/posts  
+// - https://jsonplaceholder.typicode.com/users. 
+
+// Вывести в консоль информацию о количестве постов и юзеров.
+// Запросы должны выполняться одновременно, информацию выводить только после того, как будут обработаны оба запроса.
+
+let urls = [
+    'https://jsonplaceholder.typicode.com/posts',  
+    'https://jsonplaceholder.typicode.com/users',
+]
+
+// Преобразуем каждый URL в промис, возвращённый fetch
+// let requests = urls.map(url => fetch(url).then(function (response) {
+//     console.log(response.url, response.data);
+//     return response.json();
+// }));
+
+// let requests = urls.map(url => fetch(url).then(responce => responce.json()));
+
+// console.log(requests);
+// // Promise.all будет ожидать выполнения всех промисов
+// Promise.all(requests).then(res => res.forEach(r => console.log(r)));
+
+// Promise.all([
+//     fetch(urls[0]),
+//     fetch(urls[1])
+// ]).then(function (responseList) {
+//     postResponse = responseList[0];
+//     userResponse = responseList[1];
+//     postResponse.json().then(data => console.log(`We have ${data.length} posts`));
+//     userResponse.json().then(data => console.log(`We have ${data.length} users`));
+// })
+
+
+
+// Одновременно выполнить запросы, одновременно получить данные с помощью .json(). Только после всего вывести результат
+// .then(responseList => responseList.map(response => response.json())).then(promiseList => Promise.all(promiseList)).then(
+//     function (postsAndUrls) {
+//         let posts = postsAndUrls[0];
+//         let users = postsAndUrls[1];
+//         console.log(`Users = ${users.length}, Posts = ${posts.length}`);
+//     }
+// )
+
+// Просто получить цифры
+// .then(responseList => responseList.forEach(resp => resp.json().then(data => console.log(data.length))))
+// 
+
+Promise.all([
+    fetch(urls[0]),
+    fetch(urls[1])
+]).then(async function (responseList) {
+    postResponse = responseList[0];
+    userResponse = responseList[1];
+    let postMessage = await postResponse.json().then(data => `We have ${data.length} posts`);
+    let userMessage = await userResponse.json().then(data => `We have ${data.length} users`);
+    console.log(postMessage, userMessage)
 })
-console.log(names1);
-
-
-//          Напишите функцию getAverageAge(users), которая принимает массив объектов со свойством age и возвращает средний возраст.
-//          Формула вычисления среднего арифметического значения: (age1 + age2 + ... + ageN) / N.
-
-
-let vasya1 = { name: "Вася", age: 20 };
-let petya1 = { name: "Петя", age: 30 };
-let masha1 = { name: "Маша", age: 40 };
-
-let arr1 = [ vasya1, petya1, masha1 ];
-
-function getAverageAge(arr) {
-    let allAge = arr.reduce((sum, item) => sum + item.age, 0);
-
-    return allAge / arr.length;
-}
-
-console.log( getAverageAge(arr1));
-
-
-
