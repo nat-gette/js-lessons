@@ -385,40 +385,275 @@ let urls = [
 // prom().then().catch(console.log)
 
 
-// 3 Задача : Сделайте функцию, которая будет генерировать случайные числа от 1 до 10. 
+//              3 Задача : Сделайте функцию, которая будет генерировать случайные числа от 1 до 10. 
 // Сделайте так, чтобы сгенерированное число было задержкой функции setTimeout в секундах.
 //  Оберните все это в промис. Пусть промис выполнится успешно, если сгенерировано число от 1 до 5, и с ошибкой - если от 6 до 10.
 
 
-let prom = new Promise ((resolve, reject) => {
+// let prom = new Promise ((resolve, reject) => {
 
-    function randomNum(min, max) {
-        return Math.floor(Math.random() * (max - min + 1 )) + min;
-    }
-    let succesNum;
+//     function randomNum(min, max) {
+//         return Math.floor(Math.random() * (max - min + 1 )) + min;
+//     }
+//     let succesNum;
 
-    function res() {
-        let num = randomNum(1, 10);
+//     function res() {
+//         let num = randomNum(1, 10);
         
-        if (num <= 5) {
-            stm(num);
-            resolve("success");
-        } else {
-            reject('err');
-            // console.log(`it's ${num}`);
-            // res();
+//         if (num <= 5) {
+//             stm(num);
+//             resolve("success");
+//         } else {
+//             reject('err');
+//             // console.log(`it's ${num}`);
+//             // res();
+//         }
+//     }
+//     res();
+//     function stm (num) {
+//         setTimeout (() => {
+//             console.log(`it's ${num}`);
+//         }, num * 1000); 
+//     }
+
+// })
+
+// prom.then(r => console.log(r)).catch(er => console.log(er, `it's ${num}`));
+
+
+
+//             Сделайте промис, который через 5 секунд случайным образом выполнится или с успехом, или с ошибкой.
+
+// function randomBool() {
+//     return (Math.floor(Math.random() * 2) === 0);
+// }
+// randomBool();
+
+// let prom = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         if(randomBool() === true) {
+//             resolve('res')
+//         } else (
+//             reject('err')
+//         )
+//     }, 5000)
+// })
+
+// prom
+//     .then( res => console.log(res))
+//     .catch( err => console.log(err))
+
+
+//                 Сделайте цепочку из трех промисов. Пусть первый промис возвращает число. 
+//                 Сделайте так, чтобы каждый последующий промис через 3 секунды возводил в квадрат результат предыдущего промиса.
+//                 После окончания манипуляций выведите число алертом на экран.
+
+// let promise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve(3);
+//     }, 3000)
+// })
+
+// promise
+//     .then (
+//         function(res) {
+//             return new Promise((resolve, reject) => {
+//                 setTimeout(() => { 
+//                     resolve (res * res);
+//                 }, 3000)
+//             })
+//         }
+//     )
+//     .then (
+//         function(res) {
+//             return new Promise((resolve, reject) => {
+//                 setTimeout(() => { 
+//                     resolve (res * res);
+//                 }, 3000)
+//             })
+//         }
+//     )
+//     .then( res => console.log(res))  //81
+
+
+//                    Переделайте предыдущую задачу так, чтобы один из промисов в цепочке выполнился с ошибкой.
+//                     В конце цепочки расположите метод catch, который поймает эту ошибку.
+
+// let promise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve(3);
+//     }, 3000)
+// })
+
+// promise
+//     .then (
+//         function(res) {
+//             return new Promise((resolve, reject) => {
+//                 setTimeout(() => { 
+//                     resolve (res * res);
+//                 }, 3000)
+//             })
+//         }
+//     )
+//     .then (
+//         function(res) {
+//             return new Promise((resolve, reject) => {
+//                 setTimeout(() => { 
+//                     reject('err');
+//                 }, 3000)
+//             })
+//         }
+//     )
+//     .then( res => console.log(res))  
+//     .catch(err => console.log(err))
+
+
+
+//                    Сделайте 3 промиса, в каждом из которых расположена функция setTimeout со случайно задержкой от 1 до 5 секунд. 
+//                    Пусть каждый промис своим результатом возвращает эту задержку. 
+//                    С помощью Promise.all получите массив результатов, найдите его сумму, выведите на экран.
+
+
+
+// function randomNum(min, max) {
+//     return Math.floor(Math.random() * (max - min + 1 )) + min;
+// }
+
+
+// Promise.all([
+//     new Promise((resolve, reject) => {
+//         let num = randomNum(1, 5);
+//         setTimeout((num) => {
+//             resolve(num);
+//         }, num * 1000, num )
+//     }),
+//     new Promise((resolve, reject) => {
+//         let num = randomNum(1, 5);
+//         setTimeout((num) => {
+//             resolve(num);
+//         }, num * 1000, num )
+//     }),
+//     new Promise((resolve, reject) => {
+//         let num = randomNum(1, 5);
+//         setTimeout((num) => {
+//             resolve(num);
+//         }, num * 1000 , num)
+//     }),
+// ])
+//     .then( res => console.log(res.reduce((sum, current) => sum + current, 0)))
+
+
+//                        Сделайте 3 промиса, в каждом из которых расположена функция setTimeout со случайно задержкой от 1 до 5 секунд.
+//                        Пусть первый промис возвращает число 1, второй - число 2, третий - число 3.
+//                        С помощью Promise.race дождитесь загрузки первого сработавшего промиса и выведите результат его работы на экран.
+
+// function randomNum(min, max) {
+//     return Math.floor(Math.random() * (max - min + 1 )) + min;
+// }
+
+// Promise.race([
+//     new Promise((resolve, reject) => {
+//         let num = randomNum(1, 5);
+//         setTimeout(() => {
+//             resolve("1");
+//         }, num * 1000, num )
+//     }),
+//     new Promise((resolve, reject) => {
+//         let num = randomNum(1, 5);
+//         setTimeout(() => {
+//             resolve("2");
+//         }, num * 1000, num )
+//     }),
+//     new Promise((resolve, reject) => {
+//         let num = randomNum(1, 5);
+//         setTimeout(() => {
+//             resolve("3");
+//         }, num * 1000 , num)
+//     }),
+// ])
+//     .then( res => console.log(res))
+
+
+
+
+//                      Сделайте функцию getNum, которая возвращает промис, который с задержкой в 3 секунды выведет случайное число от 1 до 5. 
+//                      Создайте async функцию, которая с помощью await будет дожидаться результата getNum, затем возводить его в квадрат и выводить на экран.
+
+// function randomNum(min, max) {
+//     return Math.floor(Math.random() * (max - min + 1 )) + min;
+// }
+
+// function getNum () {
+//     return new Promise ((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve(randomNum(1, 5));
+//         }, 3000)
+//     });
+// }
+
+// async function func () {
+//     let num = await getNum();
+//     console.log(num*num);
+// }
+// func();
+
+
+//                    Сделайте функцию getNum1, которая возвращает промис, который с задержкой в 3 секунды выведет случайное число от 1 до 5.
+//                     Сделайте также функцию getNum2, которая возвращает промис, который с задержкой в 5 секунд выведет случайное число от 6 до 10. 
+//                     Создайте async функцию, которая с помощью await будет дожидаться результата getNum1, затем будет дожидаться результата getNum2, 
+//                     а затем найдет сумму полученных чисел и выведет на экран.
+
+
+// function randomNum(min, max) {
+//     return Math.floor(Math.random() * (max - min + 1 )) + min;
+// }
+
+// function getNum1 () {
+//     return new Promise ((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve(randomNum(1, 5));
+//         }, 3000)
+//     });
+// }
+
+// function getNum2 () {
+//     return new Promise ((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve(randomNum(6, 10));
+//         }, 3000)
+//     });
+// }
+
+// async function func () {
+//     let num1 = await getNum1();
+//     let num2 = await getNum2();
+
+//     console.log(num1 + num2);
+// }
+// func();
+
+
+//               Даны 3 картинки. С помощью Promise.all дождитесь окончания загрузки всех картинок и выведите их на экран.
+
+let imgs = [
+    'img/1.png',
+    'img/2.png',
+    'img/3.png',
+]
+
+function loadImage(path) {
+    return new Promise((resolve, rejedt) => {
+        let image = new Image();
+        image.src = path;
+        image.onload = () => resolve(image);
+        image.onerror =  () => rejedt(path);
+    })
+}
+
+Promise.all(imgs.map(loadImage)).then(
+    imgs => {
+        for(let image of imgs) {
+            document.body.appendChild(image);
         }
     }
-    res();
-    function stm (num) {
-        setTimeout (() => {
-            console.log(`it's ${num}`);
-        }, num * 1000); 
-    }
-
-})
-
-prom.then(r => console.log(r)).catch(er => console.log(er, `it's ${num}`));
-
-
-
+)
