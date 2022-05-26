@@ -635,25 +635,52 @@ let urls = [
 
 //               Даны 3 картинки. С помощью Promise.all дождитесь окончания загрузки всех картинок и выведите их на экран.
 
-let imgs = [
-    'img/1.png',
-    'img/2.png',
-    'img/3.png',
-]
+// let imgs = [
+//     'img/1.png',
+//     'img/2.png',
+//     'img/3.png',
+// ]
 
-function loadImage(path) {
-    return new Promise((resolve, rejedt) => {
-        let image = new Image();
-        image.src = path;
-        image.onload = () => resolve(image);
-        image.onerror =  () => rejedt(path);
-    })
-}
+// function loadImage(path) {
+//     return new Promise((resolve, rejedt) => {
+//         let image = new Image();
+//         image.src = path;
+//         image.onload = () => resolve(image);
+//         image.onerror =  () => rejedt(path);
+//     })
+// }
 
-Promise.all(imgs.map(loadImage)).then(
-    imgs => {
-        for(let image of imgs) {
-            document.body.appendChild(image);
-        }
-    }
-)
+// Promise.all(imgs.map(loadImage)).then(
+//     imgs => {
+//         for(let image of imgs) {
+//             document.body.appendChild(image);
+//         }
+//     }
+// )
+
+
+
+//           Можно ли "перевыполнить" промис?  --- этот вопрос не поняла
+//           Что выведет код ниже?
+
+// let promise = new Promise(function(resolve, reject) {
+//     resolve(1);
+
+//     setTimeout(() => resolve(2), 1000);
+// });
+
+// promise.then(alert);
+// ---выведет первый резолв (1)
+
+
+//         Задержка на промисах
+//         Встроенная функция setTimeout использует колбэк-функции. Создайте альтернативу, использующую промисы.
+//         Функция delay(ms) должна возвращать промис, который перейдёт в состояние «выполнен» через ms миллисекунд, так чтобы мы могли добавить к нему .then:
+
+// function delay(ms) {
+//     return new Promise((resolve, reject) => {
+//         resolve('res');
+//     }, ms)
+// }
+
+// delay(3000).then(() => alert('выполнилось через 3 секунды'));
