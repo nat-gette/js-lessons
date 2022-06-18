@@ -5,7 +5,16 @@ class UI {
     }
     // display profile
     showProfile(user) {
-
+        this.profile.innerHTML = `
+        <div class="card card-body mb-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="${user.avatar_url}" alt=""  class ="img-fluid mb-2">
+                    <a href="${user.html_url}" target="_blank" class="btn btn-primary btn-block mb-4">View Profile</a>
+                </div>
+            </div>
+        </div>
+        `
     }
     // display pepos
     showRepos(repos) {
@@ -16,7 +25,7 @@ class UI {
 
         this.clearAlert();
         // cteate tempale
-        const alert =`<div class="${className}">${message}</div>`;
+        const alert =`<div class="${className}" >${message}</div>`;
 
         this.search_container.insertAdjacentHTML('afterbegin', alert);
 

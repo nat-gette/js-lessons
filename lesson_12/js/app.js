@@ -17,12 +17,13 @@ searchInput.addEventListener('keyup', (e) => {
         github.getUser(userText)
             .then(user => {
                 console.log(user);
-                if (user.massage === 'Not Found' || user.message === "API rate limit exceeded for 78.109.73.101. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)") {
+                if (user.message == 'Not Found') {
                     // alert
                     ui.showAlert(`User ${userText} not found`, 'alert alert-danger');
 
                 } else {
                     // profile
+                    ui.showProfile(user);
                 }
             })
             .catch(err => console.log(err))
